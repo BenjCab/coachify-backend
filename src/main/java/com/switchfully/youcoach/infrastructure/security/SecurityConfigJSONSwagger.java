@@ -29,6 +29,7 @@ public class SecurityConfigJSONSwagger extends SecurityConfig {
         web.ignoring()
                 .antMatchers("/v3/api-docs/**",
                         "/configuration/ui",
+
                         "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",
@@ -48,6 +49,7 @@ public class SecurityConfigJSONSwagger extends SecurityConfig {
         http.authorizeRequests()
                 .antMatchers("/v3/api-docs/**",
                         "/configuration/ui",
+
                         "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",

@@ -11,16 +11,16 @@ public class MockAccountService implements AccountService {
 
     @Override
     public Optional<MockAccount> findByEmail(String userName) {
-        return Optional.empty();
+        return Optional.of(new MockAccount());
     }
 
     @Override
     public MockAccount createAccount(CreateSecuredUserDto createSecuredUserDto) {
-        return null;
+        return new MockAccount();
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return false;
+        return true;
     }
 }
