@@ -1,4 +1,4 @@
-package com.switchfully.youcoach.application;
+package com.switchfully.youcoach;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
