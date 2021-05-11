@@ -17,8 +17,6 @@ public class User {
     private String lastName;
     @Column(name = "email")
     private String email;
-    @Column(name = "password")
-    private String password;
 
     public User setFirstName(String firstName) {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName, "Firstname");
@@ -38,12 +36,6 @@ public class User {
         return this;
     }
 
-    public User setPassword(String password) {
-        ValidationUtil.throwExceptionIfPasswordNullEmptyBlankOrInvalid(password);
-        this.password = password;
-        return this;
-    }
-
     public Long getId() {
         return id;
     }
@@ -58,9 +50,5 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 }
