@@ -31,7 +31,7 @@ public class User {
     }
 
     public User setEmail(String email) {
-        ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email);
+//        ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email);
         this.email = email;
         return this;
     }
