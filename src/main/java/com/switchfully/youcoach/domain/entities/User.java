@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.domain.entities;
 
+import com.switchfully.youcoach.infrastructure.util.ValidationUtil;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,21 +21,25 @@ public class User {
     private String password;
 
     public User setFirstName(String firstName) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName, "Firstname");
         this.firstName = firstName;
         return this;
     }
 
     public User setLastName(String lastName) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(lastName, "Lastname");
         this.lastName = lastName;
         return this;
     }
 
     public User setEmail(String email) {
+        ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email);
         this.email = email;
         return this;
     }
 
     public User setPassword(String password) {
+        ValidationUtil.throwExceptionIfPasswordNullEmptyBlankOrInvalid(password);
         this.password = password;
         return this;
     }

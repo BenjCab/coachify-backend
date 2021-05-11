@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.switchfully.skeleton</groupId>
+    <groupId>com.switchfully.youcoach</groupId>
     <artifactId>10-backend</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -93,12 +93,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!--        swagger         -->
-        <!--		<dependency>-->
-        <!--			<groupId>io.springfox</groupId>-->
-        <!--			<artifactId>springfox-boot-starter</artifactId>-->
-        <!--			<version>3.0.0</version>-->
-        <!--		</dependency>-->
+        <!-- mappers -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -111,11 +106,12 @@
             <version>1.5.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
 
+        <!-- database -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
