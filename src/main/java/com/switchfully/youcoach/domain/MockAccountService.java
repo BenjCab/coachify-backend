@@ -1,8 +1,7 @@
 package com.switchfully.youcoach.domain;
 
-import com.switchfully.youcoach.security.authentication.user.api.Account;
-import com.switchfully.youcoach.security.authentication.user.api.AccountService;
-import com.switchfully.youcoach.security.authentication.user.api.CreateSecuredUserDto;
+import com.switchfully.youcoach.infrastructure.security.authentication.user.api.AccountService;
+import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

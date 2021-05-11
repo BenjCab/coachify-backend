@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.domain;
 
-import com.switchfully.youcoach.security.authentication.user.Authority;
-import com.switchfully.youcoach.security.authentication.user.api.Account;
+import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
+import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
 
 import java.util.List;
 
