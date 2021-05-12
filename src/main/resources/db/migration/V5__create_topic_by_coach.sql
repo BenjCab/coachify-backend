@@ -1,6 +1,6 @@
 SET SCHEMA 'public';
 
-create table topic_by_coach
+create table if not exists topic_by_coach
 (
     id       serial  not null primary key,
     coach_id int     not null

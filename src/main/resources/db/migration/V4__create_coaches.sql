@@ -1,6 +1,6 @@
 SET SCHEMA 'public';
 
-create table coaches
+create table if not exists coaches
 (
     coach_id     serial not null primary key,
     coachee_id   int    not null
@@ -10,4 +10,4 @@ create table coaches
     image        varchar(255)
 );
 
-insert into coaches (coachee_id) values (5);
+insert into coaches (coachee_id) values (1);
