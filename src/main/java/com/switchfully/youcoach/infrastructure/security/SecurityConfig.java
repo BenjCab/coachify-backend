@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Profile("production")
 @EnableWebSecurity(debug = false)
@@ -67,31 +68,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new OnAuthenticationFailureHandler();
     }
 
-    @Bean
-    CorsFilter corsFilter(@Value("${youcoach.allowed.origins}") String origins) {
-
-        CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setMaxAge(8000L);
-        corsConfig.setAllowCredentials(true);
-        corsConfig.addAllowedOrigin(origins);
-        corsConfig.addAllowedHeader("*");
-        corsConfig.addAllowedMethod("GET");
-        corsConfig.addAllowedMethod("POST");
-        corsConfig.addAllowedMethod("PUT");
-        corsConfig.addAllowedMethod("PATCH");
-        corsConfig.addAllowedMethod("DELETE");
-
-
-        UrlBasedCorsConfigurationSource source =
-                new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfig);
-
-        return new CorsFilter(source);
-    }
+    //todo change this back when we enable security
+//    @Bean
+//    CorsFilter corsFilter(@Value("${youcoach.allowed.origins}") String origins) {
+//
+//        CorsConfiguration corsConfig = new CorsConfiguration();
+//        corsConfig.setMaxAge(8000L);
+//        corsConfig.setAllowCredentials(true);
+//        corsConfig.addAllowedOrigin(origins);
+//        corsConfig.addAllowedHeader("*");
+//        corsConfig.addAllowedMethod("GET");
+//        corsConfig.addAllowedMethod("POST");
+//        corsConfig.addAllowedMethod("PUT");
+//        corsConfig.addAllowedMethod("PATCH");
+//        corsConfig.addAllowedMethod("DELETE");
+//
+//
+//        UrlBasedCorsConfigurationSource source =
+//                new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfig);
+//
+//        return new CorsFilter(source);
+//    }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(securedUserService).passwordEncoder(passwordEncoder);
     }
+
+
 
 }
