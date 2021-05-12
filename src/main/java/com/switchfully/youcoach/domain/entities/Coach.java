@@ -11,7 +11,7 @@ public class Coach {
     private int id;
     @OneToOne
     @JoinColumn(name="coachee_id")
-    private User coachee;
+    private Coachee coachee;
     @Column(name = "introduction")
     private String introduction;
     @Column(name = "availability")
@@ -19,9 +19,9 @@ public class Coach {
     @Column(name = "image")
     private String image;
 
-    private List<Topic> topics;
+//    private List<Topic> topics;
 
-    public Coach(User coachee, String introduction, String availability, String image) {
+    public Coach(Coachee coachee, String introduction, String availability, String image) {
         this.coachee = coachee;
         this.introduction = introduction;
         this.availability = availability;

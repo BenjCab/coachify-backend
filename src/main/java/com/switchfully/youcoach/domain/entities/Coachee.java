@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Coachee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,19 +18,19 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    public User setFirstName(String firstName) {
+    public Coachee setFirstName(String firstName) {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName, "Firstname");
         this.firstName = firstName;
         return this;
     }
 
-    public User setLastName(String lastName) {
+    public Coachee setLastName(String lastName) {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(lastName, "Lastname");
         this.lastName = lastName;
         return this;
     }
 
-    public User setEmail(String email) {
+    public Coachee setEmail(String email) {
         ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email);
         this.email = email;
         return this;

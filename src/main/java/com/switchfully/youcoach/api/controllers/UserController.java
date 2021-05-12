@@ -4,14 +4,12 @@ import com.switchfully.youcoach.api.dtos.CreateUserDTO;
 import com.switchfully.youcoach.api.dtos.UserDTO;
 import com.switchfully.youcoach.api.mappers.CreateUserDTOMapper;
 import com.switchfully.youcoach.api.mappers.UserDTOMapper;
-import com.switchfully.youcoach.domain.entities.User;
+import com.switchfully.youcoach.domain.entities.Coachee;
 import com.switchfully.youcoach.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -31,10 +29,10 @@ public class UserController {
     @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO createUser(@RequestBody CreateUserDTO createUserDTO) {
-        User user = createUserDTOMapper.toEntity(createUserDTO);
-        userService.addUser(user);
-        logger.info(user + "is added.");
-        return userDTOMapper.toDTO(user);
+        Coachee coachee = createUserDTOMapper.toEntity(createUserDTO);
+        userService.addUser(coachee);
+        logger.info(coachee + "is added.");
+        return userDTOMapper.toDTO(coachee);
     }
 
     @GetMapping(path= "/{id}",produces = "application/json")

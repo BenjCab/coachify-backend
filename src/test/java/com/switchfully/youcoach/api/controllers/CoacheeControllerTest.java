@@ -4,8 +4,6 @@ import com.switchfully.youcoach.api.dtos.CreateUserDTO;
 import com.switchfully.youcoach.api.dtos.UserDTO;
 import com.switchfully.youcoach.api.mappers.CreateUserDTOMapper;
 import com.switchfully.youcoach.api.mappers.UserDTOMapper;
-import com.switchfully.youcoach.domain.entities.User;
-import com.switchfully.youcoach.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class UserControllerTest {
+class CoacheeControllerTest {
     @LocalServerPort
     private int port;
 
