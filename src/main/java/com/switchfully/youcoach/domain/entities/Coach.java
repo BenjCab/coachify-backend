@@ -7,8 +7,10 @@ import java.util.List;
 public class Coach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "coach_id")
     private int id;
+    @OneToOne
+    @JoinColumn(name="coachee_id")
     private User coachee;
     @Column(name = "introduction")
     private String introduction;
