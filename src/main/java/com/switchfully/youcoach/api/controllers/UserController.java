@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 @CrossOrigin("http://localhost:4200")
@@ -33,5 +35,11 @@ public class UserController {
         userService.addUser(user);
         logger.info(user + "is added.");
         return userDTOMapper.toDTO(user);
+    }
+
+    @GetMapping(path= "/{id}",produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO getUserById(@PathVariable Long id) {
+        return userDTOMapper.toDTO(userService.getUserById(id));
     }
 }
