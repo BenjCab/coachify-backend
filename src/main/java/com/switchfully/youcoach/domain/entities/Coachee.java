@@ -5,7 +5,7 @@ import com.switchfully.youcoach.infrastructure.util.ValidationUtil;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "coachees")
 public class Coachee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
