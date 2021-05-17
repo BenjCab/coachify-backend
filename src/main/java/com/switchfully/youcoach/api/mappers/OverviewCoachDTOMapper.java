@@ -26,7 +26,7 @@ public class OverviewCoachDTOMapper {
     public OverviewCoachDTO toDTO(Coach coach) {
         return new OverviewCoachDTO()
                 .setFirstName(coach.getCoachee().getFirstName())
-                .setLastName(coach.getCoachee().getFirstName())
+                .setLastName(coach.getCoachee().getLastName())
                 .setImage(coach.getImage())
                 .setTopicsByCoach(topicDTOMapper.toDTOList(topicByCoachService.getAllTopicsByCoachId(coach)));
 
