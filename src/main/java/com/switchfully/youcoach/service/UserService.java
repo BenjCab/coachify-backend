@@ -1,9 +1,13 @@
 package com.switchfully.youcoach.service;
 
+import com.switchfully.youcoach.api.dtos.OverviewCoachDTO;
+import com.switchfully.youcoach.domain.entities.Coach;
 import com.switchfully.youcoach.domain.entities.Coachee;
 import com.switchfully.youcoach.domain.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
