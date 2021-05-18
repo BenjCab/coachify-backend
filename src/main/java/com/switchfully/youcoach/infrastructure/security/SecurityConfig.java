@@ -6,6 +6,7 @@ import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtAu
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtGenerator;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUserService;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
@@ -33,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecuredUserService securedUserService;
     private final AccountService accountService;
 
+    @Autowired
     public SecurityConfig(SecuredUserService securedUserService,
                           PasswordEncoder passwordEncoder,
                           JwtGenerator jwtGenerator,
