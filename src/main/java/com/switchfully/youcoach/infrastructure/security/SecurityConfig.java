@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecuredUserService securedUserService;
     private final AccountService accountService;
 
-    @Autowired
+
     public SecurityConfig(SecuredUserService securedUserService,
                           PasswordEncoder passwordEncoder,
                           JwtGenerator jwtGenerator,
