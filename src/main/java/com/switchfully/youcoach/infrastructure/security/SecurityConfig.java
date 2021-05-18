@@ -44,23 +44,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.accountService = accountService;
     }
 
-    //todo change this when we want to use security
-    //    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.cors().and().csrf().disable().authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/security/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .addFilter(new JwtAuthenticationFilter(authenticationManager(), authenticationFailureHandler(), jwtGenerator, accountService))
-//                .addFilter(new JwtAuthorizationFilter(authenticationManager(), authenticationFailureHandler(), jwtGenerator))
-//                .sessionManagement()
-//                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable().authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/security/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), authenticationFailureHandler(), jwtGenerator, accountService))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), authenticationFailureHandler(), jwtGenerator))
+                .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    }
+
+/*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated().and().csrf().disable();
     }
+*/
 
 
     @Bean
@@ -69,27 +71,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     //todo change this back when we enable security
-//    @Bean
-//    CorsFilter corsFilter(@Value("${youcoach.allowed.origins}") String origins) {
-//
-//        CorsConfiguration corsConfig = new CorsConfiguration();
-//        corsConfig.setMaxAge(8000L);
-//        corsConfig.setAllowCredentials(true);
-//        corsConfig.addAllowedOrigin(origins);
-//        corsConfig.addAllowedHeader("*");
-//        corsConfig.addAllowedMethod("GET");
-//        corsConfig.addAllowedMethod("POST");
-//        corsConfig.addAllowedMethod("PUT");
-//        corsConfig.addAllowedMethod("PATCH");
-//        corsConfig.addAllowedMethod("DELETE");
-//
-//
-//        UrlBasedCorsConfigurationSource source =
-//                new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", corsConfig);
-//
-//        return new CorsFilter(source);
-//    }
+   @Bean
+   CorsFilter corsFilter(@Value("${youcoach.allowed.origins}") String origins) {
+
+       CorsConfiguration corsConfig = new CorsConfiguration();
+       corsConfig.setMaxAge(8000L);
+       corsConfig.setAllowCredentials(true);
+       corsConfig.addAllowedOrigin(origins);
+       corsConfig.addAllowedHeader("*");
+       corsConfig.addAllowedMethod("GET");
+       corsConfig.addAllowedMethod("POST");
+       corsConfig.addAllowedMethod("PUT");
+       corsConfig.addAllowedMethod("PATCH");
+       corsConfig.addAllowedMethod("DELETE");
+
+
+       UrlBasedCorsConfigurationSource source =
+               new UrlBasedCorsConfigurationSource();
+       source.registerCorsConfiguration("/**", corsConfig);
+
+       return new CorsFilter(source);
+   }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
