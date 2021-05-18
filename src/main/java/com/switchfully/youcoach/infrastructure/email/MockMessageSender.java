@@ -5,7 +5,7 @@ import com.switchfully.youcoach.infrastructure.email.MessageSender;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Profile({"test", "development"})
+@Profile({"test", "development", "production"})
 @Component
 public class MockMessageSender implements MessageSender {
 
