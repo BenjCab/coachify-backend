@@ -22,4 +22,8 @@ public class CoachService {
     public List<Coach> getAllCoaches() {
         return coachRepository.findAll();
     }
+
+    public Coach getCoachById(Long id) {
+        return coachRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("id not found in database"));
+    }
 }
