@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.infrastructure.security.authentication.user.accountverification;
 
 import com.switchfully.youcoach.infrastructure.email.MessageSender;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
+import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.event.AccountCreated;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;

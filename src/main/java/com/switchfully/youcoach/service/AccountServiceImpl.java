@@ -1,12 +1,11 @@
 package com.switchfully.youcoach.service;
 
+import com.switchfully.youcoach.api.OverviewCoachDTO;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.domain.AccountRepository;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.AccountService;
+import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,5 +42,16 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public boolean existsByEmail(String email) {
         return findByEmail(email).isPresent();
+    }
+
+    @Override
+    public Account getUserById(Long id) {
+        return accountRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(id + " was not found in database."));
+
+    }
+
+    @Override
+    public List<Account> getCoaches() {
+        return accountRepository.getAccountImplsByAuthoritiesContaining(Authority.COACH);
     }
 }

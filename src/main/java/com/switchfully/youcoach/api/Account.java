@@ -1,4 +1,4 @@
-package com.switchfully.youcoach.infrastructure.security.authentication.user.api;
+package com.switchfully.youcoach.api;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
 
@@ -8,6 +8,10 @@ public interface Account {
     Long getId();
 
     String getEmail();
+
+    String getFirstName();
+
+    String getLastName();
 
     String getPassword();
     void setPassword(String encode);

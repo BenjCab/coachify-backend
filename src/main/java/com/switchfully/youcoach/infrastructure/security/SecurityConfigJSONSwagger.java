@@ -1,8 +1,8 @@
 package com.switchfully.youcoach.infrastructure.security;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtGenerator;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUserService;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.AccountService;
+import com.switchfully.youcoach.service.SecuredUserService;
+import com.switchfully.youcoach.service.AccountService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

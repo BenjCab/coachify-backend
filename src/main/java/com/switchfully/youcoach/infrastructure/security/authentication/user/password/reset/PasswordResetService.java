@@ -1,8 +1,10 @@
 package com.switchfully.youcoach.infrastructure.security.authentication.user.password.reset;
 
+import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.email.MessageSender;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.event.ResetPasswordRequestReceived;
+import com.switchfully.youcoach.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -4,8 +4,8 @@ import com.switchfully.youcoach.infrastructure.security.authentication.OnAuthent
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtAuthenticationFilter;
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtAuthorizationFilter;
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtGenerator;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUserService;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.AccountService;
+import com.switchfully.youcoach.service.SecuredUserService;
+import com.switchfully.youcoach.service.AccountService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;

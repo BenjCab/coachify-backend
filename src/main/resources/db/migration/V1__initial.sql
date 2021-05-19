@@ -16,7 +16,16 @@ create table authorities
 
 create table account_verification
 (
-    id bigint auto_increment primary key not null,
-    verification_code varchar(255)  not null,
-    created_on datetime not null
-)
+    id                bigint auto_increment primary key not null,
+    verification_code varchar(255)                      not null,
+    created_on        datetime                          not null
+);
+
+create table coach_profile
+(
+    id           bigint auto_increment primary key not null,
+    account_id   bigint                            not null,
+    introduction varchar(255),
+    availability varchar(255),
+    image        varchar(255)
+);

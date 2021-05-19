@@ -2,8 +2,8 @@ package com.switchfully.youcoach.infrastructure.security.authentication.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUser;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.AccountService;
+import com.switchfully.youcoach.api.Account;
+import com.switchfully.youcoach.service.AccountService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

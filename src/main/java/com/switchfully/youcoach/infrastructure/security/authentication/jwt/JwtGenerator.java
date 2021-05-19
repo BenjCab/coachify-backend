@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.infrastructure.security.authentication.jwt;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
+import com.switchfully.youcoach.api.Account;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;

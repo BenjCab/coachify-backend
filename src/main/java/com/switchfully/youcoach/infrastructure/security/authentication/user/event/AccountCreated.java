@@ -2,7 +2,7 @@ package com.switchfully.youcoach.infrastructure.security.authentication.user.eve
 
 import com.switchfully.youcoach.domain.Event;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.accountverification.AccountVerification;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
+import com.switchfully.youcoach.api.Account;
 
 public class AccountCreated implements Event {
 

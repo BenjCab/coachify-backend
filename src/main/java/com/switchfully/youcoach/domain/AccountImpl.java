@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.domain;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
-import com.switchfully.youcoach.infrastructure.security.authentication.user.api.Account;
+import com.switchfully.youcoach.api.Account;
 
 import javax.persistence.*;
 import java.util.List;
@@ -57,10 +57,12 @@ public class AccountImpl implements Account {
         return this.id;
     }
 
+    @Override
     public String getFirstName() {
         return this.firstName;
     }
 
+    @Override
     public String getLastName() {
         return this.lastName;
     }

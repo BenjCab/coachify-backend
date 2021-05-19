@@ -4,13 +4,17 @@ import java.util.Objects;
 
 public class SecuredUserDto {
     private long id;
+    private String firstName;
+    private String lastName;
     private String email;
     private boolean accountEnabled;
 
-    public SecuredUserDto(long id, String email, boolean accountEnabled) {
+    public SecuredUserDto(long id, String email, boolean accountEnabled, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.accountEnabled = accountEnabled;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public SecuredUserDto() {
@@ -26,6 +30,14 @@ public class SecuredUserDto {
 
     public boolean isAccountEnabled() {
         return accountEnabled;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
