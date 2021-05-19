@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.infrastructure.security.authentication.user;
 
-
 import com.switchfully.youcoach.infrastructure.security.authentication.user.accountverification.AccountVerificationService;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.exception.AccountNotFoundException;
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 
 @Service
 @Transactional
