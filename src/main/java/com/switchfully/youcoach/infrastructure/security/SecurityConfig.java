@@ -24,6 +24,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+import java.util.List;
+
 @Profile("production")
 @EnableWebSecurity(debug = false)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -74,12 +76,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //todo change this back when we enable security
    @Bean
-   CorsFilter corsFilter(@Value("${youcoach.allowed.origins}") String origins) {
+   CorsFilter corsFilter(@Value("${youcoach.allowed.origins}") List<String> origins) {
 
        CorsConfiguration corsConfig = new CorsConfiguration();
        corsConfig.setMaxAge(8000L);
        corsConfig.setAllowCredentials(true);
-       corsConfig.addAllowedOrigin(origins);
+       corsConfig.setAllowedOrigins(origins);
        corsConfig.addAllowedHeader("*");
        corsConfig.addAllowedMethod("GET");
        corsConfig.addAllowedMethod("POST");
