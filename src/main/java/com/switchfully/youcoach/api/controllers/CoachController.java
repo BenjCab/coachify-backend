@@ -31,4 +31,10 @@ public class CoachController {
     public List<OverviewCoachDTO> getAllCoaches() {
         return overviewCoachDTOMapper.toDTOList(coachService.getAllCoaches());
     }
+
+    @GetMapping(path="/{id}",produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public OverviewCoachDTO getCoachById(@PathVariable Long id) {
+        return overviewCoachDTOMapper.toDTO(coachService.getCoachById(id));
+    }
 }

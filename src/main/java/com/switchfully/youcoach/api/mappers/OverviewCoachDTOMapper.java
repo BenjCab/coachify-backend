@@ -28,7 +28,11 @@ public class OverviewCoachDTOMapper {
                 .setFirstName(coach.getCoachee().getFirstName())
                 .setLastName(coach.getCoachee().getLastName())
                 .setImage(coach.getImage())
-                .setTopicsByCoach(topicDTOMapper.toDTOList(topicByCoachService.getAllTopicsByCoachId(coach)));
+                .setTopicsByCoach(topicDTOMapper.toDTOList(topicByCoachService.getAllTopicsByCoachId(coach)))
+                .setIntroduction(coach.getIntroduction())
+                .setAvailability(coach.getAvailability())
+                .setEmail(coach.getCoachee().getEmail())
+                .setId(coach.getId());
 
     }
 
