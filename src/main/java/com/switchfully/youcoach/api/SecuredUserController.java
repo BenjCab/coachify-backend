@@ -32,8 +32,9 @@ public class SecuredUserController {
         if (!isPasswordValid(createSecuredUserDto.getPassword())) {
             throw new IllegalStateException("Password needs te be 8 characters : --> 1 capital, 1 lowercase and 1 one number ");
         }
-        LOGGER.info("User was added");
-        return securedUserService.registerAccount(createSecuredUserDto);
+        SecuredUserDto securedUserDto = securedUserService.registerAccount(createSecuredUserDto);
+        LOGGER.info("Added the user");
+        return securedUserDto;
     }
 
     @PreAuthorize("isAnonymous()")

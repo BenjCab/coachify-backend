@@ -51,7 +51,7 @@ public class YoucoachApplication {
                     .setFirstName("Marge")
                     .setLastName("Simpson")
                     .setEmail("marge@test.com")
-                    .setPassword(passwordEncoder.encode("password"))
+                    .setPassword(passwordEncoder.encode("Password1"))
                     .setEnabled(true)
                     .setAuthorities(List.of(Authority.COACH, Authority.ADMIN, Authority.COACHEE))
                     .build();
