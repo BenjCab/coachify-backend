@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.Account;
+import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface AccountService {
 
     boolean existsByEmail(String email);
 
-    Account getUserById(Long id);
+    AccountImpl getUserById(Long id);
 
     List<Account> getCoaches();
 }

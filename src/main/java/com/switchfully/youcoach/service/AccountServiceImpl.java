@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account getUserById(Long id) {
+    public AccountImpl getUserById(Long id) {
         return accountRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(id + " was not found in database."));
 
     }
