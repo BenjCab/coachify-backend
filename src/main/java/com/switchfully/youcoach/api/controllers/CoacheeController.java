@@ -1,5 +1,6 @@
-package com.switchfully.youcoach.api;
+package com.switchfully.youcoach.api.controllers;
 
+import com.switchfully.youcoach.api.mappers.AccountMapper;
 import com.switchfully.youcoach.service.AccountService;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.SecuredUserDto;
 import org.springframework.http.HttpStatus;

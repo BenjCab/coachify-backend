@@ -1,5 +1,7 @@
-package com.switchfully.youcoach.api;
+package com.switchfully.youcoach.api.controllers;
 
+import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
+import com.switchfully.youcoach.api.mappers.CoachProfileMapper;
 import com.switchfully.youcoach.service.CoachProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +16,24 @@ import java.util.List;
 public class CoachController {
     private static final Logger logger = LoggerFactory.getLogger(CoachController.class);
     private final CoachProfileService coachProfileService;
-    private final AccountMapper accountMapper;
+    private final CoachProfileMapper coachProfileMapper;
 
-    public CoachController(CoachProfileService coachProfileService, AccountMapper accountMapper) {
+    public CoachController(CoachProfileService coachProfileService, CoachProfileMapper coachProfileMapper) {
         this.coachProfileService = coachProfileService;
-        this.accountMapper = accountMapper;
+        this.coachProfileMapper = coachProfileMapper;
     }
+
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public List<OverviewCoachDTO> getAllCoaches() {
+    public List<CoachProfileDTO> getAllCoaches() {
         return coachProfileService.getAllCoachesWithCoachProfile();
     }
+
+    @GetMapping(path="/{id}",produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public CoachProfileDTO getCoachById(@PathVariable Long id) {
+        return coachProfileMapper.toDTO(coachProfileService.getCoachById(id));
+    }
+
 }
