@@ -23,6 +23,7 @@ public class CoachController {
         this.coachProfileMapper = coachProfileMapper;
     }
 
+
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public List<CoachProfileDTO> getAllCoaches() {
