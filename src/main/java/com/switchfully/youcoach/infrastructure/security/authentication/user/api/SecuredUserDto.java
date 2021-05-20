@@ -1,5 +1,8 @@
 package com.switchfully.youcoach.infrastructure.security.authentication.user.api;
 
+import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
+
+import java.util.List;
 import java.util.Objects;
 
 public class SecuredUserDto {
@@ -8,13 +11,16 @@ public class SecuredUserDto {
     private String lastName;
     private String email;
     private boolean accountEnabled;
+    private List<Authority> authorities;
 
-    public SecuredUserDto(long id, String email, boolean accountEnabled, String firstName, String lastName) {
+    public SecuredUserDto(long id, String email, boolean accountEnabled,
+                          String firstName, String lastName, List<Authority> authorities) {
         this.id = id;
         this.email = email;
         this.accountEnabled = accountEnabled;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.authorities = authorities;
     }
 
     public SecuredUserDto() {
@@ -53,5 +59,9 @@ public class SecuredUserDto {
     @Override
     public int hashCode() {
         return Objects.hash(id, email, accountEnabled);
+    }
+
+    public List<Authority> getAuthorities() {
+        return authorities;
     }
 }
