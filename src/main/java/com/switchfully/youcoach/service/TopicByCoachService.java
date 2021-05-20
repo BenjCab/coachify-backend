@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TopicByCoachService {
     List<TopicByCoach> getAllTopicsByCoachProfile(CoachProfile coachProfile);
+
 }

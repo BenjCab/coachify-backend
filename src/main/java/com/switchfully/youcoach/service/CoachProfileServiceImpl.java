@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.service;
 
-import com.switchfully.youcoach.api.CoachProfileMapper;
-import com.switchfully.youcoach.api.OverviewCoachDTO;
+import com.switchfully.youcoach.api.mappers.CoachProfileMapper;
+import com.switchfully.youcoach.api.CoachProfileDTO;
 import com.switchfully.youcoach.domain.CoachProfile;
 import com.switchfully.youcoach.domain.CoachRepository;
 import org.springframework.stereotype.Service;
@@ -21,9 +21,13 @@ public class CoachProfileServiceImpl implements CoachProfileService {
     }
 
     @Override
-    public List<OverviewCoachDTO> getAllCoachesWithCoachProfile() {
+    public List<CoachProfileDTO> getAllCoachesWithCoachProfile() {
         List<CoachProfile> coachProfiles = coachRepository.findAll();
         return coachProfileMapper.toDTOList(coachProfiles);
+    }
+
+    public CoachProfile getCoachById(Long id) {
+        return coachRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("id not found in database"));
     }
 
 }

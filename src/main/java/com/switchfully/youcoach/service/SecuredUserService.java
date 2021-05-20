@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.Account;
-import com.switchfully.youcoach.api.AccountMapper;
+import com.switchfully.youcoach.api.mappers.AccountMapper;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.accountverification.AccountVerificationService;

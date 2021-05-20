@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.service;
 
-import com.switchfully.youcoach.api.OverviewCoachDTO;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.domain.AccountRepository;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;

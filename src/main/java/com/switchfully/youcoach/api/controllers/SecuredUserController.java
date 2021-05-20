@@ -1,4 +1,4 @@
-package com.switchfully.youcoach.api;
+package com.switchfully.youcoach.api.controllers;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
 import com.switchfully.youcoach.service.SecuredUserService;

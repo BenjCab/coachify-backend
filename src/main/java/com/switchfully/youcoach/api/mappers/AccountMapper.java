@@ -1,5 +1,6 @@
-package com.switchfully.youcoach.api;
+package com.switchfully.youcoach.api.mappers;
 
+import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.SecuredUserDto;
 import org.springframework.stereotype.Component;
 
