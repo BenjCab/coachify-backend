@@ -1,6 +1,6 @@
 package com.switchfully.youcoach.service;
 
-import com.switchfully.youcoach.api.CoachProfileDTO;
+import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
 import com.switchfully.youcoach.domain.CoachProfile;
 
 import java.util.List;

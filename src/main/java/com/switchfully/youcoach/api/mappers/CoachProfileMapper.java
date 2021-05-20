@@ -1,6 +1,6 @@
 package com.switchfully.youcoach.api.mappers;
 
-import com.switchfully.youcoach.api.CoachProfileDTO;
+import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
 import com.switchfully.youcoach.domain.CoachProfile;
 import com.switchfully.youcoach.service.TopicByCoachService;
 import org.springframework.stereotype.Component;

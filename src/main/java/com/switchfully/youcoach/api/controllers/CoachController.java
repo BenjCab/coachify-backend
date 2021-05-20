@@ -1,6 +1,6 @@
 package com.switchfully.youcoach.api.controllers;
 
-import com.switchfully.youcoach.api.CoachProfileDTO;
+import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
 import com.switchfully.youcoach.api.mappers.CoachProfileMapper;
 import com.switchfully.youcoach.service.CoachProfileService;
 import org.slf4j.Logger;

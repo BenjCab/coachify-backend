@@ -1,4 +1,4 @@
-package com.switchfully.youcoach.api;
+package com.switchfully.youcoach.api.DTOs;
 
 import com.switchfully.youcoach.api.DTOs.TopicDTO;
 
