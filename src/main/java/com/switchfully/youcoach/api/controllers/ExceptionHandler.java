@@ -25,11 +25,4 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         logger.warn(exception.getMessage(), exception);
         response.sendError(HttpServletResponse.SC_BAD_REQUEST, exception.getMessage());
     }
-
-    @org.springframework.web.bind.annotation.ExceptionHandler(IllegalStateException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public void invalidFieldsException(IllegalStateException ex, HttpServletResponse response) throws IOException {
-        logger.info(ex.getMessage());
-        response.sendError(400, ex.getMessage());
-    }
 }
