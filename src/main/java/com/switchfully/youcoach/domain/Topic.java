@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.domain;
 
+import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
+
 import javax.persistence.*;
 
 @Entity
@@ -29,6 +31,7 @@ public class Topic {
     }
 
     public Topic setTopicName(String name) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(name,"Topic name");
         this.topicName = name;
         return this;
     }

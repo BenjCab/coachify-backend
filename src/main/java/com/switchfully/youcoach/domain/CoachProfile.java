@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.domain;
 
+import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
+
 import javax.persistence.*;
 
 @Entity
@@ -48,6 +50,7 @@ public class CoachProfile {
     }
 
     public CoachProfile setIntroduction(String introduction) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(introduction,"Introduction");
         this.introduction = introduction;
         return this;
     }
@@ -57,6 +60,7 @@ public class CoachProfile {
     }
 
     public CoachProfile setAvailability(String availability) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(availability,"Availability");
         this.availability = availability;
         return this;
     }
@@ -75,6 +79,7 @@ public class CoachProfile {
     }
 
     public CoachProfile setAccount(AccountImpl account) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(account,"Account");
         this.account = account;
         return this;
     }

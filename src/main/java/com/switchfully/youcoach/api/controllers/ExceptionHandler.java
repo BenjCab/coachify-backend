@@ -13,11 +13,13 @@ import java.io.IOException;
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandler.class);
+
     @org.springframework.web.bind.annotation.ExceptionHandler(IllegalArgumentException.class)
     public void handleIllegalArgumentException(IllegalArgumentException exception, HttpServletResponse response) throws IOException {
         logger.warn(exception.getMessage(), exception);
         response.sendError(HttpServletResponse.SC_BAD_REQUEST, exception.getMessage());
     }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(IllegalStateException.class)
     public void handleIllegalStateException(IllegalStateException exception, HttpServletResponse response) throws IOException {
         logger.warn(exception.getMessage(), exception);

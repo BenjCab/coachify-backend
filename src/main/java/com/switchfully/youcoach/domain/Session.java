@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.domain;
 
 import com.switchfully.youcoach.api.Account;
+import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -66,6 +67,7 @@ public class Session {
     }
 
     public Session setCoach(CoachProfile coach) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(coach,"Coach");
         this.coach = coach;
         return this;
     }
@@ -75,6 +77,7 @@ public class Session {
     }
 
     public Session setSubject(String subject) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(subject,"Subject");
         this.subject = subject;
         return this;
     }
@@ -84,6 +87,7 @@ public class Session {
     }
 
     public Session setLocation(String location) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(location,"Location");
         this.location = location;
         return this;
     }
@@ -102,6 +106,7 @@ public class Session {
     }
 
     public Session setDate(LocalDate date) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(date,"Date");
         this.date = date;
         return this;
     }
@@ -111,6 +116,7 @@ public class Session {
     }
 
     public Session setTime(LocalTime time) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(time,"Time");
         this.time = time;
         return this;
     }

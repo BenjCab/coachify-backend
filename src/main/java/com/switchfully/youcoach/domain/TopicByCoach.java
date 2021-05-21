@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.domain;
 
+import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
+
 import javax.persistence.*;
 
 @Entity
@@ -44,6 +46,7 @@ public class TopicByCoach {
     }
 
     public TopicByCoach setTopic(Topic topic) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(topic, "Topic");
         this.topic = topic;
         return this;
     }
@@ -80,6 +83,7 @@ public class TopicByCoach {
     }
 
     public TopicByCoach setCoachProfile(CoachProfile coachProfile) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(coachProfile, "Coach profile");
         this.coachProfile = coachProfile;
         return this;
     }

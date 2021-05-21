@@ -2,6 +2,7 @@ package com.switchfully.youcoach.domain;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
 import com.switchfully.youcoach.api.Account;
+import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
 
 import javax.persistence.*;
 import java.util.List;
@@ -129,11 +130,13 @@ public class AccountImpl implements Account {
         }
 
         public Builder setFirstName(String firstName) {
+            ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName,"Firstname");
             this.firstName = firstName;
             return this;
         }
 
         public Builder setLastName(String lastName) {
+            ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(lastName,"Lastname");
             this.lastName = lastName;
             return this;
         }
