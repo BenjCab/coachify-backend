@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class AccountMapper {
 
     public SecuredUserDto toUserDto(Account account) {
-        return new SecuredUserDto(account.getId(), account.getEmail(), account.isAccountEnabled(), account.getFirstName(), account.getLastName());
+        return new SecuredUserDto(account.getId(), account.getEmail(), account.isAccountEnabled(), account.getFirstName(), account.getLastName(), account.getAuthorities());
     }
 }
