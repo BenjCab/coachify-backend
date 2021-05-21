@@ -1,16 +1,18 @@
-create table topics
+set schema 'public';
+
+create table if not exists topics
 (
-    id         bigint auto_increment primary key not null,
-    topic_name varchar(44)                       not null
+    id         serial primary key not null,
+    topic_name varchar(44)        not null
 );
 
-create table topic_by_coach
+create table if not exists topic_by_coach
 (
-    id               bigint auto_increment primary key not null,
-    coach_profile_id bigint                            not null,
-    topic_id         bigint                            not null,
-    grade1           boolean,
-    grade2           boolean,
-    grade3           boolean
+    id               serial primary key not null,
+    coach_profile_id serial             not null,
+    topic_id         serial             not null,
+    grade1           boolean            not null,
+    grade2           boolean            not null,
+    grade3           boolean            not null
 
 );

@@ -1,30 +1,32 @@
-create table accounts
+set schema 'public';
+
+create table if not exists accounts
 (
-    id         bigint auto_increment primary key not null,
-    first_name varchar(44)                       not null,
-    last_name  varchar(44)                       not null,
-    email      varchar(44)                       not null,
-    password   varchar(255)                      not null,
-    enabled    boolean default false             not null
+    id         serial primary key    not null,
+    first_name varchar(44)           not null,
+    last_name  varchar(44)           not null,
+    email      varchar(44)           not null,
+    password   varchar(255)          not null,
+    enabled    boolean default false not null
 );
 
-create table authorities
+create table if not exists authorities
 (
-    account_id bigint       not null,
+    account_id serial       not null,
     authority  varchar(255) not null
 );
 
-create table account_verification
+create table if not exists account_verification
 (
-    id                bigint auto_increment primary key not null,
-    verification_code varchar(255)                      not null,
-    created_on        datetime                          not null
+    id                serial primary key not null,
+    verification_code varchar(255)       not null,
+    created_on        timestamp          not null
 );
 
-create table coach_profile
+create table if not exists coach_profile
 (
-    id           bigint auto_increment primary key not null,
-    account_id   bigint                            not null,
+    id           serial primary key not null,
+    account_id   serial             not null,
     introduction varchar(255),
     availability varchar(255),
     image        varchar(255)

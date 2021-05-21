@@ -1,8 +1,10 @@
-create table sessions
+set schema 'public';
+
+create table if not exists sessions
 (
-    session_id   bigint auto_increment primary key not null,
-    coach_id     bigint not null,
-    coachee_id   bigint not null,
+    session_id   serial primary key not null,
+    coach_id     serial             not null,
+    coachee_id   serial             not null,
     subject      varchar(255),
     location     varchar(255),
     remarks      varchar(255),
