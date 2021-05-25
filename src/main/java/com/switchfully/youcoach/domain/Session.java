@@ -8,27 +8,29 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name="sessions")
+@Table(name = "sessions")
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long sessionId;
     @ManyToOne
-    @JoinColumn(name="coachee_id")
+    @JoinColumn(name = "coachee_id")
     private AccountImpl coachee;
     @ManyToOne
-    @JoinColumn(name="coach_id")
+    @JoinColumn(name = "coach_id")
     private CoachProfile coach;
-    @Column(name="subject")
+    @Column(name = "subject")
     private String subject;
-    @Column(name="location")
+    @Column(name = "location")
     private String location;
-    @Column(name="remarks")
+    @Column(name = "remarks")
     private String remarks;
-    @Column(name="session_date")
+    @Column(name = "session_date")
     private LocalDate date;
-    @Column(name="session_time")
+    @Column(name = "session_time")
     private LocalTime time;
+    @Column(name = "status")
+    private String status;
 
     public Session(long sessionId, AccountImpl coachee, CoachProfile coach, String subject, String location, String remarks, LocalDate date, LocalTime time) {
         this.sessionId = sessionId;
@@ -67,7 +69,7 @@ public class Session {
     }
 
     public Session setCoach(CoachProfile coach) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(coach,"Coach");
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(coach, "Coach");
         this.coach = coach;
         return this;
     }
@@ -77,7 +79,7 @@ public class Session {
     }
 
     public Session setSubject(String subject) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(subject,"Subject");
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(subject, "Subject");
         this.subject = subject;
         return this;
     }
@@ -87,7 +89,7 @@ public class Session {
     }
 
     public Session setLocation(String location) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(location,"Location");
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(location, "Location");
         this.location = location;
         return this;
     }
@@ -106,7 +108,7 @@ public class Session {
     }
 
     public Session setDate(LocalDate date) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(date,"Date");
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(date, "Date");
         this.date = date;
         return this;
     }
@@ -116,8 +118,17 @@ public class Session {
     }
 
     public Session setTime(LocalTime time) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(time,"Time");
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(time, "Time");
         this.time = time;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Session setStatus(String status) {
+        this.status = status;
         return this;
     }
 }

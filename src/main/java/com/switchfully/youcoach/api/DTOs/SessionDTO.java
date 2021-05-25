@@ -12,6 +12,7 @@ public class SessionDTO {
     private String remarks;
     private LocalDate date;
     private LocalTime time;
+    private String status;
 
     public SessionDTO() {
     }
@@ -85,6 +86,15 @@ public class SessionDTO {
 
     public SessionDTO setTime(LocalTime time) {
         this.time = time;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public SessionDTO setStatus(String status) {
+        this.status = status;
         return this;
     }
 }

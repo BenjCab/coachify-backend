@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
 @RequestMapping("/sessions")
@@ -28,5 +29,12 @@ public class SessionController {
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
         logger.info("session is created");
         return sessionMapper.toDTO(sessionService.createSession(sessionDTO));
+    }
+
+    @GetMapping(produces = "application/json", path = "coachee/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<SessionDTO> getSessions(@PathVariable Long id) {
+        logger.info("getting all sessions from the coachee: " + id);
+        return sessionMapper.toDTOList(sessionService.getAllSessions(id));
     }
 }

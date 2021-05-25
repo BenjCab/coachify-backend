@@ -6,6 +6,9 @@ import com.switchfully.youcoach.service.AccountService;
 import com.switchfully.youcoach.service.CoachProfileService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class SessionMapper {
     private final CoachProfileService coachService;
@@ -25,7 +28,8 @@ public class SessionMapper {
                 .setTime(session.getTime())
                 .setSubject(session.getSubject())
                 .setLocation(session.getLocation())
-                .setRemarks(session.getRemarks());
+                .setRemarks(session.getRemarks())
+                .setStatus(session.getStatus());
     }
 
     public Session toEntity(SessionDTO sessionDTO) {
@@ -36,6 +40,11 @@ public class SessionMapper {
                 .setTime(sessionDTO.getTime())
                 .setSubject(sessionDTO.getSubject())
                 .setLocation(sessionDTO.getLocation())
-                .setRemarks(sessionDTO.getRemarks());
+                .setRemarks(sessionDTO.getRemarks())
+                .setStatus(sessionDTO.getStatus());
+    }
+
+    public List<SessionDTO> toDTOList(List<Session> sessions) {
+        return sessions.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }
