@@ -36,8 +36,9 @@ public class CoacheeController {
     }
     @GetMapping(path="/reset-password/{resetPasswordId}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public Boolean resetPasswordTokenExist(@PathVariable String resetPasswordId){
+    public String resetPasswordTokenExist(@PathVariable String resetPasswordId){
         logger.info("request for checking if reset password token exist " + resetPasswordId);
-        return accountService.resetPasswordTokenExist(resetPasswordId);
+        accountService.resetPasswordTokenExist(resetPasswordId);
+        return "Hell yea";
     }
 }
