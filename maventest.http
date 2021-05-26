@@ -1,0 +1,4 @@
+GET https://repo.maven.apache.org/maven2/
+Accept: application/json
+
+###
