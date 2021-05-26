@@ -7,6 +7,8 @@ public class SessionDTO {
     private long sessionId;
     private long coacheeId;
     private long coachId;
+    private String coachFirstName;
+    private String coachLastName;
     private String subject;
     private String location;
     private String remarks;
@@ -95,6 +97,24 @@ public class SessionDTO {
 
     public SessionDTO setStatus(String status) {
         this.status = status;
+        return this;
+    }
+
+    public String getCoachFirstName() {
+        return coachFirstName;
+    }
+
+    public SessionDTO setCoachFirstName(String coachFirstName) {
+        this.coachFirstName = coachFirstName;
+        return this;
+    }
+
+    public String getCoachLastName() {
+        return coachLastName;
+    }
+
+    public SessionDTO setCoachLastName(String coachLastName) {
+        this.coachLastName = coachLastName;
         return this;
     }
 }
