@@ -40,4 +40,13 @@ public class CoacheeController {
         return accountService.resetPasswordTokenExist(resetPasswordId);
 
     }
+
+    @PostMapping(path="/reset-password/create-token/{email}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Boolean createResetPasswordToken(@PathVariable String email){
+        logger.info("Received a request to reset the password from this email address : "+email);
+        return accountService.createResetPasswordProcedure(email);
+    }
+
+
 }

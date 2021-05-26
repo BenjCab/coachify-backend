@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sessions")
+@RequestMapping
 @CrossOrigin("http://localhost:4200")
 public class SessionController {
     private static final Logger logger = LoggerFactory.getLogger(SessionController.class);
@@ -24,14 +24,14 @@ public class SessionController {
         this.sessionMapper = sessionMapper;
     }
 
-    @PostMapping(produces = "application/json", consumes = "application/json")
+    @PostMapping(produces = "application/json", consumes = "application/json", path = "/sessions")
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
         logger.info("session is created");
         return sessionMapper.toDTO(sessionService.createSession(sessionDTO));
     }
 
-    @GetMapping(produces = "application/json", path = "coachee/{id}")
+    @GetMapping(produces = "application/json", path = "coachees/{id}/sessions")
     @ResponseStatus(HttpStatus.OK)
     public List<SessionDTO> getSessions(@PathVariable Long id) {
         logger.info("getting all sessions from the coachee: " + id);

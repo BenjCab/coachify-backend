@@ -1,11 +1,14 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.DTOs.ResetPasswordDTO;
+import com.switchfully.youcoach.api.controllers.CoacheeController;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.domain.AccountRepository;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
 import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -13,9 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.Properties;
 
 @Service
@@ -24,6 +27,7 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     public AccountServiceImpl(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
         this.accountRepository = accountRepository;
@@ -76,6 +80,19 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public boolean resetPasswordTokenExist(String resetPasswordId) {
         return accountRepository.existsAccountImplByResetPasswordToken(resetPasswordId);
+    }
+
+    @Override
+    public Boolean createResetPasswordProcedure(String email) {
+        if (accountRepository.getAccountImplByEmail(email).isEmpty()){
+            logger.warn(email + " does not exist in the database : cancelled the password reset procedure.");
+            return false;
+        }
+        accountRepository.getAccountImplByEmail(email).get().setResetPasswordToken(UUID.randomUUID().toString());
+
+        // here send the email
+
+        return true;
     }
 //    @Bean
 //    public JavaMailSender getJavaMailSender() {
