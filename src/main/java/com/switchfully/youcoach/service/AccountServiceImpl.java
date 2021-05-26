@@ -61,8 +61,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public boolean resetPassword(ResetPasswordDTO resetPasswordDTO) {
         AccountImpl account = accountRepository.getAccountImplByEmail(resetPasswordDTO.getEmail()).orElseThrow(()->new IllegalArgumentException("This email was not found"));
-        if (account.getResetPasswordToken() != resetPasswordDTO.getPassword()){
-            throw new IllegalArgumentException("Wrong password reset ID");
+        if (!account.getResetPasswordToken().equals(resetPasswordDTO.getResetPasswordId())){
+            throw new IllegalArgumentException("Wrong password reset ID " + resetPasswordDTO.getResetPasswordId() + " " + account.getResetPasswordToken());
         }
         account.setPassword(passwordEncoder.encode(resetPasswordDTO.getPassword()));
         account.setResetPasswordToken(null);
