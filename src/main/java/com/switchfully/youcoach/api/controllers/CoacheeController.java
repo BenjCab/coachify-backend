@@ -30,15 +30,15 @@ public class CoacheeController {
 
     @PostMapping(path="/reset-password", produces ="application/json", consumes="application/json")
     @ResponseStatus(HttpStatus.OK)
-    public boolean resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO){
+    public Boolean resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO){
         logger.info("request for checking if reset password token exist " + resetPasswordDTO.getEmail());
         return accountService.resetPassword(resetPasswordDTO);
     }
     @GetMapping(path="/reset-password/{resetPasswordId}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public String resetPasswordTokenExist(@PathVariable String resetPasswordId){
+    public Boolean resetPasswordTokenExist(@PathVariable String resetPasswordId){
         logger.info("request for checking if reset password token exist " + resetPasswordId);
-        accountService.resetPasswordTokenExist(resetPasswordId);
-        return "Hell yea";
+        return accountService.resetPasswordTokenExist(resetPasswordId);
+
     }
 }
