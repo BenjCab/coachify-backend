@@ -24,6 +24,8 @@ public class SessionMapper {
                 .setSessionId(session.getSessionId())
                 .setCoacheeId(session.getCoachee().getId())
                 .setCoachId(session.getCoach().getId())
+                .setCoachFirstName(session.getCoach().getAccount().getFirstName())
+                .setCoachLastName(session.getCoach().getAccount().getLastName())
                 .setDate(session.getDate())
                 .setTime(session.getTime())
                 .setSubject(session.getSubject())
