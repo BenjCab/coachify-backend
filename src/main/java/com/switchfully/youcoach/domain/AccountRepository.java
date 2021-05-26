@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends JpaRepository<AccountImpl, Long> {
-    Optional<Account> getAccountImplByEmail(String email);
+    Optional<AccountImpl> getAccountImplByEmail(String email);
     List<Account> getAccountImplsByAuthoritiesContaining(Authority authority);
+    boolean existsAccountImplByResetPasswordToken(String token);
 }

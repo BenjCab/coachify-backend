@@ -20,4 +20,6 @@ public interface Account {
 
     boolean isAccountEnabled();
     void enableAccount();
+    void setResetPasswordToken(String token);
+    String getResetPasswordToken();
 }

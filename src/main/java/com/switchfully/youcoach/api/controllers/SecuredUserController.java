@@ -1,6 +1,8 @@
 package com.switchfully.youcoach.api.controllers;
 
+import com.switchfully.youcoach.api.DTOs.ResetPasswordDTO;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
+import com.switchfully.youcoach.service.AccountService;
 import com.switchfully.youcoach.service.SecuredUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +21,11 @@ public class SecuredUserController {
     private final static Logger LOGGER = LoggerFactory.getLogger(SecuredUserController.class);
 
     private final SecuredUserService securedUserService;
+    private final AccountService accountService;
 
-    public SecuredUserController(SecuredUserService securedUserService) {
+    public SecuredUserController(SecuredUserService securedUserService, AccountService coacheeService) {
         this.securedUserService = securedUserService;
+        this.accountService = coacheeService;
     }
 
     @ResponseStatus(HttpStatus.CREATED)

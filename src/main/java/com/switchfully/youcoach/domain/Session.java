@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.domain;
 
-import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
 
 import javax.persistence.*;

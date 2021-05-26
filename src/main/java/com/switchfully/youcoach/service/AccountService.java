@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.Account;
+import com.switchfully.youcoach.api.DTOs.ResetPasswordDTO;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
 
@@ -17,4 +18,6 @@ public interface AccountService {
     AccountImpl getUserById(Long id);
 
     List<Account> getCoaches();
+    boolean resetPassword(ResetPasswordDTO resetPasswordDTO);
+    boolean resetPasswordTokenExist(String resetPasswordId);
 }

@@ -36,6 +36,9 @@ public class AccountImpl implements Account {
     @Column(name = "enabled")
     private boolean enabled;
 
+    @Column(name= "reset_password_token")
+    private String resetPasswordToken;
+
     public AccountImpl() {
     }
 
@@ -47,6 +50,7 @@ public class AccountImpl implements Account {
         this.password = builder.password;
         this.authorities = builder.authorities;
         this.enabled = builder.enabled;
+        this.resetPasswordToken = builder.resetPasswordToken;
     }
 
     public static Builder builder() {
@@ -68,6 +72,15 @@ public class AccountImpl implements Account {
         return this.lastName;
     }
 
+    @Override
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+    @Override
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
 
     @Override
     public String getEmail() {
@@ -120,12 +133,18 @@ public class AccountImpl implements Account {
         private String password;
         private List<Authority> authorities;
         private boolean enabled;
+        private String resetPasswordToken;
 
         private Builder() {
         }
 
         public Builder setId(Long id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder setResetPasswordToken(String resetPasswordToken) {
+            this.resetPasswordToken = resetPasswordToken;
             return this;
         }
 
