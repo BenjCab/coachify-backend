@@ -1,7 +1,6 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.DTOs.ResetPasswordDTO;
-import com.switchfully.youcoach.api.controllers.CoacheeController;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.domain.AccountRepository;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
@@ -9,9 +8,6 @@ import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.Properties;
 
 @Service
 @Transactional
@@ -27,11 +22,13 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MessageSenderNew messageSender;
     private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
-    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncoder passwordEncoder, MessageSenderNew messageSender) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -88,27 +85,13 @@ public class AccountServiceImpl implements AccountService {
             logger.warn(email + " does not exist in the database : cancelled the password reset procedure.");
             return false;
         }
-        accountRepository.getAccountImplByEmail(email).get().setResetPasswordToken(UUID.randomUUID().toString());
+        String passwordResetToken = UUID.randomUUID().toString();
+        accountRepository.getAccountImplByEmail(email).get().setResetPasswordToken(passwordResetToken);
 
-        // here send the email
+        String body = "Please click on this link to reset your password for Coachify: http://localhost:4200/reset-password?token=" + passwordResetToken;
+
+        messageSender.sendSimpleMessage(email, "Password reset", body);
 
         return true;
     }
-//    @Bean
-//    public JavaMailSender getJavaMailSender() {
-//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-//        mailSender.setHost("smtp.gmail.com");
-//        mailSender.setPort(587);
-//
-//        mailSender.setUsername("coachify.mail.service@gmail.com");
-//        mailSender.setPassword("Coachify123456");
-//
-//        Properties props = mailSender.getJavaMailProperties();
-//        props.put("mail.transport.protocol", "smtp");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
-//        props.put("mail.debug", "true");
-//
-//        return mailSender;
-//    }
 }

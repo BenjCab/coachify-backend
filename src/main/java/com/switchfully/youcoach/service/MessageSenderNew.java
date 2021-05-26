@@ -23,7 +23,7 @@ public class MessageSenderNew {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.debug", "true");
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("noreply@baeldung.com");
+        message.setFrom("noreply@coachify.com");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
