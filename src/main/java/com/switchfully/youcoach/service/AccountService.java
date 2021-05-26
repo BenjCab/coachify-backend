@@ -20,4 +20,6 @@ public interface AccountService {
     List<Account> getCoaches();
     boolean resetPassword(ResetPasswordDTO resetPasswordDTO);
     boolean resetPasswordTokenExist(String resetPasswordId);
+
+    Boolean createResetPasswordProcedure(String email);
 }
