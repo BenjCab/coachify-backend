@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CoachRepository extends JpaRepository<CoachProfile, Long> {
+    CoachProfile getCoachProfileByAccount_Id(Long id);
 }

@@ -33,8 +33,16 @@ public class SessionController {
 
     @GetMapping(produces = "application/json", path = "coachees/{id}/sessions")
     @ResponseStatus(HttpStatus.OK)
-    public List<SessionDTO> getSessions(@PathVariable Long id) {
+    public List<SessionDTO> getSessionsCoachee(@PathVariable Long id) {
         logger.info("getting all sessions from the coachee: " + id);
-        return sessionMapper.toDTOList(sessionService.getAllSessions(id));
+        return sessionMapper.toDTOList(sessionService.getAllSessionsCoachee(id));
     }
+
+    @GetMapping(produces = "application/json", path = "coaches/{id}/sessions")
+    @ResponseStatus(HttpStatus.OK)
+    public List<SessionDTO> getSessionsCoach(@PathVariable Long id) {
+        logger.info("getting all sessions from the coach: " + id);
+        return sessionMapper.toDTOList(sessionService.getAllSessionsCoach(id));
+    }
+
 }

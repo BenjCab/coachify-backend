@@ -30,4 +30,14 @@ public class CoachProfileServiceImpl implements CoachProfileService {
         return coachRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("id not found in database"));
     }
 
+    @Override
+    public Long getCoachIdByCoacheeId(Long id) {
+        if (coachRepository.getCoachProfileByAccount_Id(id) == null) {
+            return 0L;
+        } else {
+            return coachRepository.getCoachProfileByAccount_Id(id).getId();
+        }
+    }
+
+
 }
