@@ -1,7 +1,6 @@
 package com.switchfully.youcoach.infrastructure.security;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtGenerator;
-import com.switchfully.youcoach.service.RequestRejectedExceptionFilter;
 import com.switchfully.youcoach.service.SecuredUserService;
 import com.switchfully.youcoach.service.AccountService;
 import org.springframework.context.annotation.Profile;
@@ -55,9 +54,6 @@ public class SecurityConfigJSONSwagger extends SecurityConfig {
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/webjars/**").permitAll();
-        http.addFilterBefore(new RequestRejectedExceptionFilter(),
-                ChannelProcessingFilter.class);
-
         super.configure(http);
 
     }
