@@ -8,4 +8,6 @@ import java.util.List;
 public interface CoachProfileService {
     List<CoachProfileDTO> getAllCoachesWithCoachProfile();
     CoachProfile getCoachById(Long id);
+
+    List<String> getAllTopicNames();
 }
