@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
-@RequestMapping(path = "security/account")
+@RequestMapping(path = "/security/account")
 @CrossOrigin
 public class SecuredUserController {
     private final static Logger LOGGER = LoggerFactory.getLogger(SecuredUserController.class);
