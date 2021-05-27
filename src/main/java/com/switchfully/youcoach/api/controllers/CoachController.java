@@ -42,4 +42,10 @@ public class CoachController {
         return coachProfileService.getCoachIdByCoacheeId(id);
     }
 
+    @GetMapping(path="/coaches/topicNames",produces ="application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public List<String> getAllTopicNames(){
+        return coachProfileService.getAllTopicNames();
+    }
+
 }

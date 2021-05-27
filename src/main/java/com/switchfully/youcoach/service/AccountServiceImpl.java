@@ -1,7 +1,6 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.DTOs.ResetPasswordDTO;
-import com.switchfully.youcoach.api.controllers.CoacheeController;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.domain.AccountRepository;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
@@ -23,11 +22,13 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MessageSenderNew messageSender;
     private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
-    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncoder passwordEncoder, MessageSenderNew messageSender) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -84,9 +85,12 @@ public class AccountServiceImpl implements AccountService {
             logger.warn(email + " does not exist in the database : cancelled the password reset procedure.");
             return false;
         }
-        accountRepository.getAccountImplByEmail(email).get().setResetPasswordToken(UUID.randomUUID().toString());
+        String passwordResetToken = UUID.randomUUID().toString();
+        accountRepository.getAccountImplByEmail(email).get().setResetPasswordToken(passwordResetToken);
 
-        // here send the email
+        String body = "Please click on this link to reset your password for Coachify: http://localhost:4200/reset-password?token=" + passwordResetToken;
+
+        messageSender.sendSimpleMessage(email, "Password reset", body);
 
         return true;
     }
