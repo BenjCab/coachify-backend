@@ -60,6 +60,6 @@ values(6, 5, true, false, false);
 insert into topic_by_coach(coach_profile_id, topic_id, grade1, grade2, grade3)
 values(6, 4, true, false, false);
 insert into topic_by_coach(coach_profile_id, topic_id, grade1, grade2, grade3)
-values(7, 2, true, false, false);
+values(3, 2, true, false, false);
 insert into topic_by_coach(coach_profile_id, topic_id, grade1, grade2, grade3)
-values(7, 6, true, false, false);
+values(3, 6, true, false, false);
