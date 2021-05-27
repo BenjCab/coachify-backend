@@ -10,4 +10,6 @@ public interface CoachProfileService {
     CoachProfile getCoachById(Long id);
 
     List<String> getAllTopicNames();
+
+    Long getCoachIdByCoacheeId(Long id);
 }

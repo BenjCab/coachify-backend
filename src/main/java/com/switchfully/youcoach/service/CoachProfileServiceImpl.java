@@ -40,4 +40,14 @@ public class CoachProfileServiceImpl implements CoachProfileService {
         return topicRepository.findAll().stream().map(Topic::getTopicName).collect(Collectors.toList());
     }
 
+    @Override
+    public Long getCoachIdByCoacheeId(Long id) {
+        if (coachRepository.getCoachProfileByAccount_Id(id) == null) {
+            return 0L;
+        } else {
+            return coachRepository.getCoachProfileByAccount_Id(id).getId();
+        }
+    }
+
+
 }
