@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.jwtGenerator = jwtGenerator;
         this.accountService = accountService;
 
-        setFilterProcessesUrl("/security/login");
+        setFilterProcessesUrl("security/login");
         setAuthenticationFailureHandler(failureHandler);
     }
 

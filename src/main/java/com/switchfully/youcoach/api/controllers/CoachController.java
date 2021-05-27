@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/coaches")
+@RequestMapping("coaches")
 @CrossOrigin("http://localhost:4200")
 public class CoachController {
     private static final Logger logger = LoggerFactory.getLogger(CoachController.class);
