@@ -1,8 +1,5 @@
 package com.switchfully.youcoach.api.controllers;
 
-import com.switchfully.youcoach.api.mappers.AccountMapper;
-import com.switchfully.youcoach.domain.AccountImpl;
-import com.switchfully.youcoach.domain.AccountRepository;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.SecuredUserDto;
 import org.junit.jupiter.api.Test;
