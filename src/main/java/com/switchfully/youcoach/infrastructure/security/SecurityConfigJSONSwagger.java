@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 @Profile("development")
 @EnableWebSecurity(debug=false)
@@ -53,7 +54,6 @@ public class SecurityConfigJSONSwagger extends SecurityConfig {
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/webjars/**").permitAll();
-
         super.configure(http);
 
     }
