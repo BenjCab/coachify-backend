@@ -36,4 +36,10 @@ public class CoachController {
         return coachProfileMapper.toDTO(coachProfileService.getCoachById(id));
     }
 
+    @GetMapping(path="/topicNames",produces ="application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public List<String> getAllTopicNames(){
+        return coachProfileService.getAllTopicNames();
+    }
+
 }
