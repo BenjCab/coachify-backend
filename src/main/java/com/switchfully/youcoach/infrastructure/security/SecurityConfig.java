@@ -6,7 +6,6 @@ import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtAu
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtGenerator;
 import com.switchfully.youcoach.service.SecuredUserService;
 import com.switchfully.youcoach.service.AccountService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
