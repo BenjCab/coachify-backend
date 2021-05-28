@@ -2,6 +2,7 @@ package com.switchfully.youcoach.api.controllers;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.CreateSecuredUserDto;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.SecuredUserDto;
+import com.switchfully.youcoach.util.EmailGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +11,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +28,7 @@ class UserControllerTest {
 
     @Test
     void testCreateUser() {
-        CreateSecuredUserDto createUserDTO = new CreateSecuredUserDto("Testa", "Test", "controllertest@test.com", "1234Password");
+        CreateSecuredUserDto createUserDTO = new CreateSecuredUserDto("Testa", "Test", EmailGenerator.createRandomEmail(), "1234Password");
 
         ResponseEntity<SecuredUserDto> responseEntity = this.testRestTemplate
                 .postForEntity("http://localhost:" + port + "security/account", createUserDTO, SecuredUserDto.class);
@@ -37,7 +40,7 @@ class UserControllerTest {
 
     @Test
     void givenAnInvalidPassword_whenCreatingUser_thenReturnBasRequest() {
-        CreateSecuredUserDto createUserDTO = new CreateSecuredUserDto("Testa", "Test", "controllertest2@test.com", "1234");
+        CreateSecuredUserDto createUserDTO = new CreateSecuredUserDto("Testa", "Test", EmailGenerator.createRandomEmail(), "1234");
 
         ResponseEntity<SecuredUserDto> responseEntity = this.testRestTemplate
                 .postForEntity("http://localhost:" + port + "security/account", createUserDTO, SecuredUserDto.class);
@@ -47,12 +50,13 @@ class UserControllerTest {
 
     @Test
     void givenAnInvalidEmail_whenCreatingUser_thenReturnBasRequest() {
-        CreateSecuredUserDto createUserDTO = new CreateSecuredUserDto("Testa", "Test", "controllertest3test.com", "PAssword4");
+        CreateSecuredUserDto createUserDTO = new CreateSecuredUserDto("Testa", "Test", "dfsdfjkdfering", "PAssword4");
 
         ResponseEntity<SecuredUserDto> responseEntity = this.testRestTemplate
                 .postForEntity("http://localhost:" + port + "security/account", createUserDTO, SecuredUserDto.class);
 
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
     }
+
 
 }

@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.domain;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
+import com.switchfully.youcoach.util.EmailGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ class CoachRepositoryTest {
         AccountImpl account = AccountImpl.builder()
                 .setFirstName("Summer")
                 .setLastName("Smith")
-                .setEmail("test@test.com")
+                .setEmail(EmailGenerator.createRandomEmail())
                 .setPassword("password")
                 .setEnabled(true)
                 .setAuthorities(List.of(Authority.COACH, Authority.COACHEE))
@@ -54,7 +55,7 @@ class CoachRepositoryTest {
         AccountImpl account = AccountImpl.builder()
                 .setFirstName("Foo")
                 .setLastName("Bar")
-                .setEmail("account@test.com")
+                .setEmail(EmailGenerator.createRandomEmail())
                 .setPassword("password")
                 .setEnabled(true)
                 .setAuthorities(List.of(Authority.COACH, Authority.COACHEE))
