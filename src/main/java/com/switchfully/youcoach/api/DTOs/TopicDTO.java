@@ -9,6 +9,7 @@ public class TopicDTO {
     public String getTopicName() {
         return topicName;
     }
+
     public TopicDTO setTopicName(String topicName) {
         this.topicName = topicName;
         return this;

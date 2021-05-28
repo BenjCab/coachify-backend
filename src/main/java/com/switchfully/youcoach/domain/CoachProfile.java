@@ -49,29 +49,12 @@ public class CoachProfile {
         return introduction;
     }
 
-    public CoachProfile setIntroduction(String introduction) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(introduction,"Introduction");
-        this.introduction = introduction;
-        return this;
-    }
-
     public String getAvailability() {
         return availability;
     }
 
-    public CoachProfile setAvailability(String availability) {
-        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(availability,"Availability");
-        this.availability = availability;
-        return this;
-    }
-
     public String getImage() {
         return image;
-    }
-
-    public CoachProfile setImage(String image) {
-        this.image = image;
-        return this;
     }
 
     public AccountImpl getAccount() {
@@ -100,11 +83,13 @@ public class CoachProfile {
         }
 
         public Builder setIntroduction(String introduction) {
+            ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(introduction,"Introduction");
             this.introduction = introduction;
             return this;
         }
 
         public Builder setAvailability(String availability) {
+            ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(availability,"Availability");
             this.availability = availability;
             return this;
         }
