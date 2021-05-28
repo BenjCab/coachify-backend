@@ -14,9 +14,6 @@ public class MessageSenderNew {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-//        mailSender.setUsername("coachify.mail.service@gmail.com");
-//        mailSender.setPassword("Coachify123456");
-
         mailSender.setUsername(System.getenv("MAIL_USERNAME"));
         mailSender.setPassword(System.getenv("MAIL_PASSWORD"));
 
