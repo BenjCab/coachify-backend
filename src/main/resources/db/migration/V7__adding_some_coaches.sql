@@ -22,7 +22,7 @@ insert into authorities(account_id, authority)
 values (6, 'COACHEE');
 
 insert into accounts(first_name, last_name, email, password, enabled)
-values ('TheDoctor', 'Doctor', 'doctor@test.com', '$2a$10$fMwGqxsxtRttQsFl3g8GXeYDK3BJMeZH4MM9ZYlgnw9T42cxXux7u', true);
+values ('The', 'Doctor', 'doctor@test.com', '$2a$10$fMwGqxsxtRttQsFl3g8GXeYDK3BJMeZH4MM9ZYlgnw9T42cxXux7u', true);
 insert into authorities(account_id, authority)
 values (7, 'COACH');
 insert into authorities(account_id, authority)
