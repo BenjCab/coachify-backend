@@ -88,7 +88,7 @@ public class AccountServiceImpl implements AccountService {
         String passwordResetToken = UUID.randomUUID().toString();
         accountRepository.getAccountImplByEmail(email).get().setResetPasswordToken(passwordResetToken);
 
-        String body = "Please click on this link to reset your password for Coachify: https://coachify.netlify.app/reset-password?token=" + passwordResetToken;
+        String body = "Hello, \n A request to reset your password has been send. \n Please click on this link to reset your password for Coachify: https://coachify.netlify.app/reset-password?token=" + passwordResetToken +"\n If you did not make that request please ignore this email. \n \n Regards, the coachify team.";
 
         messageSender.sendSimpleMessage(email, "Password reset", body);
 
