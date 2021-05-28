@@ -57,10 +57,16 @@
 //                .setAuthorities(List.of(Authority.COACH, Authority.COACHEE))
 //                .build();
 //
-//        accountService.createAccount(new CreateSecuredUserDto(account1.getFirstName(), account1.getLastName(), account1.getEmail(), account1.getPassword()));
+//        accountService.createAccount(
+//                new CreateSecuredUserDto(
+//                        account1.getFirstName(),
+//                        account1.getLastName(),
+//                        account1.getEmail(),
+//                        account1.getPassword()));
+//
 //        jwtGenerator.generateToken(account1);
 //
-//        AccountImpl account2 = AccountImpl.builder()
+//        AccountImpl coachee = AccountImpl.builder()
 //                .setFirstName("Bart")
 //                .setLastName("Simpson")
 //                .setEmail("bart@test.com")
@@ -69,13 +75,22 @@
 //                .setAuthorities(List.of(Authority.COACHEE))
 //                .build();
 //
-//        CoachProfile coachProfile1 = new CoachProfile().setAccount(account1).setAvailability("Sunday").setImage("./assets/images/profile-picture-coach.png").setIntroduction("intro");
+//        CoachProfile coachProfile1 = new CoachProfile()
+//                .setAccount(account1)
+//                .setAvailability("Sunday")
+//                .setImage("./assets/images/profile-picture-coach.png")
+//                .setIntroduction("intro");
 //
 //        Topic python = new Topic().setTopicName("Python");
 //
-//        TopicByCoach topicByCoach1 = new TopicByCoach().setTopic(python).setCoachProfile(coachProfile1).setGrade1(true).setGrade2(true).setGrade3(false);
+//        TopicByCoach topicByCoach1 = new TopicByCoach()
+//                .setTopic(python)
+//                .setCoachProfile(coachProfile1)
+//                .setGrade1(true)
+//                .setGrade2(true)
+//                .setGrade3(false);
 //
-//        sessionDTO.setCoacheeId(1)
+//        sessionDTO.setCoacheeId(coachee.getId())
 //                .setCoachId(1)
 //                .setSubject("testSubject")
 //                .setLocation("testLocation")
@@ -84,7 +99,8 @@
 //                .setTime(LocalTime.now())
 //                .setStatus("Requested");
 //
-//        ResponseEntity<SessionDTO> responseEntity = this.testRestTemplate.postForEntity("http://localhost:" + port + "/sessions", sessionDTO, SessionDTO.class);
+//        ResponseEntity<SessionDTO> responseEntity = this.testRestTemplate
+//                .postForEntity("http://localhost:" + port + "/sessions", sessionDTO, SessionDTO.class);
 //
 //        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
 //        assertNotEquals(responseEntity.getBody(), null);

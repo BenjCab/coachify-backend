@@ -28,6 +28,11 @@ public class CreateSecuredUserDto {
     public String getPassword() {
         return password;
     }
+
+    public CreateSecuredUserDto setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 }
 
 
