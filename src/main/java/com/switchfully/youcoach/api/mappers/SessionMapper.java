@@ -31,7 +31,9 @@ public class SessionMapper {
                 .setSubject(session.getSubject())
                 .setLocation(session.getLocation())
                 .setRemarks(session.getRemarks())
-                .setStatus(session.getStatus());
+                .setStatus(session.getStatus())
+                .setCoacheeFirstName(session.getCoachee().getFirstName())
+                .setCoacheeLastName(session.getCoachee().getLastName());
     }
 
     public Session toEntity(SessionDTO sessionDTO) {

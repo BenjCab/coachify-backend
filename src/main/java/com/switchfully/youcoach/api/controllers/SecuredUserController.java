@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.api.controllers;
 
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
+import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
 import com.switchfully.youcoach.service.AccountService;
 import com.switchfully.youcoach.service.SecuredUserService;
 import org.slf4j.Logger;
@@ -30,7 +31,7 @@ public class SecuredUserController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
     public SecuredUserDto createUser(@RequestBody CreateSecuredUserDto createSecuredUserDto) {
-        if (!isEmailValid(createSecuredUserDto.getEmail())) {
+        if (!ValidationUtil.isEmailValid(createSecuredUserDto.getEmail())) {
             throw new IllegalStateException("Email is not valid !");
         }
         if (!isPasswordValid(createSecuredUserDto.getPassword())) {
@@ -74,15 +75,6 @@ public class SecuredUserController {
     public void invalidFieldsException(IllegalStateException ex, HttpServletResponse response) throws IOException {
         LOGGER.info(ex.getMessage());
         response.sendError(400, ex.getMessage());
-    }
-
-    boolean isEmailValid(String email) {
-        if (email == null) return false;
-
-        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(email);
-        return m.matches();
     }
 
     boolean isPasswordValid(String password) {
