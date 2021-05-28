@@ -37,7 +37,7 @@ insert into coach_profile(account_id, introduction, availability, image)
 values (4, 'i build stuff', 'every other day', './assets/images/bob.jpg');
 
 insert into coach_profile(account_id, introduction, availability, image)
-values (5, 'ill teach you how to slain monster and use good programming practice', 'every monday', './assets/images/gerald.jpg.png');
+values (5, 'ill teach you how to slain monster and use good programming practice', 'every monday', './assets/images/gerald.jpg');
 
 insert into coach_profile(account_id, introduction, availability, image)
 values (6, 'This is not an easter egg.', '2 first sundays of the month', './assets/images/Rick_Sanchez.png');
