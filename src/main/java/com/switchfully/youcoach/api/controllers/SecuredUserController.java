@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.api.controllers;
 
-import com.switchfully.youcoach.api.DTOs.ResetPasswordDTO;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
 import com.switchfully.youcoach.service.AccountService;
 import com.switchfully.youcoach.service.SecuredUserService;
