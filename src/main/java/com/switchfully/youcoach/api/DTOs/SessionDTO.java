@@ -9,6 +9,8 @@ public class SessionDTO {
     private long coachId;
     private String coachFirstName;
     private String coachLastName;
+    private String coacheeFirstName;
+    private String coacheeLastName;
     private String subject;
     private String location;
     private String remarks;
@@ -115,6 +117,24 @@ public class SessionDTO {
 
     public SessionDTO setCoachLastName(String coachLastName) {
         this.coachLastName = coachLastName;
+        return this;
+    }
+
+    public String getCoacheeFirstName() {
+        return coacheeFirstName;
+    }
+
+    public SessionDTO setCoacheeFirstName(String coacheeFirstName) {
+        this.coacheeFirstName = coacheeFirstName;
+        return this;
+    }
+
+    public String getCoacheeLastName() {
+        return coacheeLastName;
+    }
+
+    public SessionDTO setCoacheeLastName(String coacheeLastName) {
+        this.coacheeLastName = coacheeLastName;
         return this;
     }
 }
