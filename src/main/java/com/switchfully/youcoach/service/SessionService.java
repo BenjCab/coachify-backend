@@ -1,7 +1,6 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.DTOs.SessionDTO;
-import com.switchfully.youcoach.api.controllers.SessionController;
 import com.switchfully.youcoach.api.mappers.SessionMapper;
 import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.domain.CoachProfile;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,16 +33,17 @@ public class SessionService {
     }
 
     public Session createSession(SessionDTO sessionDTO) {
-        //logger.warn("session date : "+sessionDTO.getDate());
-        //logger.warn("today's date : "+LocalDate.now());
-//        if (!sessionDTO.getDate().isEqual(LocalDate.now())) {
-//            if (sessionDTO.getDate().isBefore(LocalDate.now())) {
-//                throw new IllegalArgumentException("You cant ask for a session before today's date.");
-//            }
-//        }
-//        if (sessionDTO.getDate().isEqual(LocalDate.now()) && sessionDTO.getTime().isBefore(LocalTime.now())) {
-//            throw new IllegalArgumentException("You cant ask for a session for earlier today.");
-//        }
+        sessionDTO.setDate(sessionDTO.getDate().plusDays(1));
+        logger.warn("session date : " + sessionDTO.getDate());
+        logger.warn("today's date : " + LocalDate.now());
+        if (!sessionDTO.getDate().isEqual(LocalDate.now())) {
+            if (sessionDTO.getDate().isBefore(LocalDate.now())) {
+                throw new IllegalArgumentException("You cant ask for a session before today's date.");
+            }
+        }
+        if (sessionDTO.getDate().isEqual(LocalDate.now()) && sessionDTO.getTime().isBefore(LocalTime.now())) {
+            throw new IllegalArgumentException("You cant ask for a session for earlier today.");
+        }
         return sessionRepository.save(sessionMapper.toEntity(sessionDTO));
     }
 
