@@ -28,6 +28,7 @@ public class SessionController {
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
         logger.info("received a session request for this date : " + sessionDTO.getDate());
+        sessionDTO.setStatus("Requested");
         return sessionMapper.toDTO(sessionService.createSession(sessionDTO));
     }
 

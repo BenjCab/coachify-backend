@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Locale;
@@ -50,33 +52,30 @@ public class SessionService {
 
     public List<Session> getAllSessionsCoachee(Long accountId) {
         AccountImpl account = accountService.getUserById(accountId);
-        return sessionRepository.getAllByCoachee(account).stream().map(this::updateSessionStatus).collect(Collectors.toList());
+        return sessionRepository.getAllByCoachee(account).stream().map(this::updateAutomaticallySessionStatus).collect(Collectors.toList());
     }
 
-    //todo change name + expand this with time + perhaps other reasoning
-    public Session updateSessionStatus(Session sessionToUpdate) {
-        if (LocalDate.now().isAfter(sessionToUpdate.getDate()) && LocalTime.now().isAfter(sessionToUpdate.getTime())) {
+    public Session updateAutomaticallySessionStatus(Session sessionToUpdate) {
+
+        if ((sessionToUpdate.getDate().isBefore(LocalDate.now()) || sessionToUpdate.getDate().isEqual(LocalDate.now())) && LocalTime.now().isAfter(sessionToUpdate.getTime())) {
+
             switch (sessionToUpdate.getStatus().toLowerCase(Locale.ROOT)) {
-                case "Requested":
+                case "requested":
                     sessionToUpdate.setStatus("Finished (Automatically closed)");
                     break;
-                case "Accepted":
+                case "accepted":
                     sessionToUpdate.setStatus("Done, waiting feedback");
-                    break;
-                case "Declined":
-                    sessionToUpdate.setStatus("Finished (declined)");
                     break;
                 default:
                     break;
             }
-            sessionToUpdate.setStatus("Finished (Automatically closed)");
         }
         return sessionToUpdate;
     }
 
     public List<Session> getAllSessionsCoach(Long coachId) {
         CoachProfile coachProfile = coachProfileService.getCoachById(coachId);
-        return sessionRepository.getAllByCoach(coachProfile).stream().map(this::updateSessionStatus).collect(Collectors.toList());
+        return sessionRepository.getAllByCoach(coachProfile).stream().map(this::updateAutomaticallySessionStatus).collect(Collectors.toList());
     }
 
     public Session setSessionStatus(Long id, String status) {

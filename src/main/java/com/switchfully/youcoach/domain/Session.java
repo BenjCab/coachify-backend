@@ -5,6 +5,7 @@ import com.switchfully.youcoach.infrastructure.validations.ValidationUtil;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Locale;
 
 @Entity
 @Table(name = "sessions")
@@ -127,7 +128,30 @@ public class Session {
     }
 
     public Session setStatus(String status) {
-        this.status = status;
+        this.status = validateSessionStatus(status);
         return this;
+    }
+
+    public String validateSessionStatus(String sessionStatus) {
+        switch (sessionStatus.toLowerCase(Locale.ROOT)) {
+            case "requested":
+                return "Requested";
+            case "accepted":
+                return "Accepted";
+            case "done, waiting feedback":
+                return "Done, Waiting Feedback";
+            case "finished (feedback provided)":
+                return "Finished (feedback provided)";
+            case "finished (cancelled by coachee)":
+                return "Finished (cancelled by coachee)";
+            case "finished (cancelled by coach)":
+                return "Finished (cancelled by coach)";
+            case "finished (declined)":
+                return "Finished (declined)";
+            case "finished (automatically closed)":
+                return "Finished (automatically closed)";
+            default:
+                throw new IllegalArgumentException("Status of session does not exist.");
+        }
     }
 }
