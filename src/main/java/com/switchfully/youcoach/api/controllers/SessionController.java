@@ -45,4 +45,11 @@ public class SessionController {
         return sessionMapper.toDTOList(sessionService.getAllSessionsCoach(id));
     }
 
+    @PostMapping(consumes = "application/json", path = "sessions/{id}/set-status")
+    @ResponseStatus(HttpStatus.CREATED)
+    public SessionDTO setSessionStatus(@RequestBody SessionDTO sessionDTO, @PathVariable Long id) {
+        logger.info("Setting the status of session " + id + " to: " + sessionDTO.getStatus());
+        return sessionMapper.toDTO(sessionService.setSessionStatus(id, sessionDTO.getStatus()));
+    }
+
 }
