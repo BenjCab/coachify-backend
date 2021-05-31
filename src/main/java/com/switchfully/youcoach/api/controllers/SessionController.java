@@ -28,6 +28,8 @@ public class SessionController {
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
         logger.info("session is created");
+        //todo delete logger when date is fixed (sprint to fix 4)
+        logger.info(sessionDTO.getDate().toString());
         return sessionMapper.toDTO(sessionService.createSession(sessionDTO));
     }
 
@@ -43,6 +45,13 @@ public class SessionController {
     public List<SessionDTO> getSessionsCoach(@PathVariable Long id) {
         logger.info("getting all sessions from the coach: " + id);
         return sessionMapper.toDTOList(sessionService.getAllSessionsCoach(id));
+    }
+
+    @PostMapping(consumes = "application/json", path = "sessions/{id}/set-status")
+    @ResponseStatus(HttpStatus.CREATED)
+    public SessionDTO setSessionStatus(@RequestBody SessionDTO sessionDTO, @PathVariable Long id) {
+        logger.info("Setting the status of session " + id + " to: " + sessionDTO.getStatus());
+        return sessionMapper.toDTO(sessionService.setSessionStatus(id, sessionDTO.getStatus()));
     }
 
 }

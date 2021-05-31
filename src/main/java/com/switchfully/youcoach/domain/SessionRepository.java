@@ -9,4 +9,5 @@ import java.util.List;
 public interface SessionRepository extends JpaRepository<Session, Long> {
     List<Session> getAllByCoachee(AccountImpl account);
     List<Session> getAllByCoach (CoachProfile profile);
+    Session getSessionBySessionId (long ID);
 }
