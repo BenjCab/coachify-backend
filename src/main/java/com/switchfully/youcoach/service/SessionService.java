@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,8 +55,22 @@ public class SessionService {
         return sessionRepository.getAllByCoachee(account).stream().map(this::updateSessionStatus).collect(Collectors.toList());
     }
 
+    //todo change name + expand this with time + perhaps other reasoning
     public Session updateSessionStatus(Session sessionToUpdate) {
-        if (LocalDate.now().isAfter(sessionToUpdate.getDate())) {
+        if (LocalDate.now().isAfter(sessionToUpdate.getDate()) && LocalTime.now().isAfter(sessionToUpdate.getTime())) {
+            switch (sessionToUpdate.getStatus().toLowerCase(Locale.ROOT)) {
+                case "Requested":
+                    sessionToUpdate.setStatus("Finished (Automatically closed)");
+                    break;
+                case "Accepted":
+                    sessionToUpdate.setStatus("Done, waiting feedback");
+                    break;
+                case "Declined":
+                    sessionToUpdate.setStatus("Finished (declined)");
+                    break;
+                default:
+                    break;
+            }
             sessionToUpdate.setStatus("Finished (Automatically closed)");
         }
         return sessionToUpdate;
@@ -63,5 +79,10 @@ public class SessionService {
     public List<Session> getAllSessionsCoach(Long coachId) {
         CoachProfile coachProfile = coachProfileService.getCoachById(coachId);
         return sessionRepository.getAllByCoach(coachProfile).stream().map(this::updateSessionStatus).collect(Collectors.toList());
+    }
+
+    public Session setSessionStatus(Long id, String status) {
+        Session session = sessionRepository.getSessionBySessionId(id);
+        return session.setStatus(status);
     }
 }
