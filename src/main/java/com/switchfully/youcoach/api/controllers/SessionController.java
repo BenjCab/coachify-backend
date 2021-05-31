@@ -27,7 +27,7 @@ public class SessionController {
     @PostMapping(produces = "application/json", consumes = "application/json", path = "/sessions")
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
-        logger.info("session is created");
+        logger.info("received a session request for this date : " + sessionDTO.getDate());
         return sessionMapper.toDTO(sessionService.createSession(sessionDTO));
     }
 
