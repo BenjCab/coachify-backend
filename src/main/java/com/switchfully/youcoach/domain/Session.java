@@ -140,16 +140,16 @@ public class Session {
                 return "Accepted";
             case "done, waiting feedback":
                 return "Done, Waiting Feedback";
-            case "finished (feedback provided)":
-                return "Finished (feedback provided)";
+            case "finished (eedback provided)":
+                return "Finished (Feedback provided)";
             case "finished (cancelled by coachee)":
                 return "Finished (cancelled by coachee)";
             case "finished (cancelled by coach)":
-                return "Finished (cancelled by coach)";
+                return "Finished (Cancelled by coach)";
             case "finished (declined)":
-                return "Finished (declined)";
+                return "Finished (Declined)";
             case "finished (automatically closed)":
-                return "Finished (automatically closed)";
+                return "Finished (Automatically closed)";
             default:
                 throw new IllegalArgumentException("Status of session does not exist.");
         }
