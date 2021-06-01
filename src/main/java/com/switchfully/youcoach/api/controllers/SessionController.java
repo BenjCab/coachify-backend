@@ -25,6 +25,7 @@ public class SessionController {
         this.sessionMapper = sessionMapper;
     }
 
+    @PreAuthorize("hasAnyAuthority('COACH, ADMIN, COACHEE')")
     @PostMapping(produces = "application/json", consumes = "application/json", path = "/sessions")
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO createSession(@RequestBody SessionDTO sessionDTO) {
