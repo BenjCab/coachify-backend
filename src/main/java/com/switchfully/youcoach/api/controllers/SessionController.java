@@ -49,7 +49,7 @@ public class SessionController {
         return sessionMapper.toDTOList(sessionService.getAllSessionsCoach(id));
     }
 
-    @PreAuthorize("hasAnyAuthority('COACH, ADMIN')")
+    @PreAuthorize("hasAnyAuthority('COACH, ADMIN, COACHEE')")
     @PostMapping(consumes = "application/json", path = "sessions/{id}/set-status")
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO setSessionStatus(@RequestBody SessionDTO sessionDTO, @PathVariable Long id) {
