@@ -64,7 +64,7 @@ class SessionControllerTest {
         coachee = AccountImpl.builder()
                 .setFirstName("Bart")
                 .setLastName("Simpson")
-                .setEmail("bart@test.com")
+                .setEmail(EmailGenerator.createRandomEmail())
                 .setPassword("password")
                 .setEnabled(true)
                 .setAuthorities(List.of(Authority.COACHEE))
