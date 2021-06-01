@@ -6,6 +6,7 @@ import com.switchfully.youcoach.service.SessionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class SessionController {
         return sessionMapper.toDTO(sessionService.createSession(sessionDTO));
     }
 
+    @PreAuthorize("hasAnyAuthority('COACHEE, ADMIN')")
     @GetMapping(produces = "application/json", path = "coachees/{id}/sessions")
     @ResponseStatus(HttpStatus.OK)
     public List<SessionDTO> getSessionsCoachee(@PathVariable Long id) {
@@ -39,6 +41,7 @@ public class SessionController {
         return sessionMapper.toDTOList(sessionService.getAllSessionsCoachee(id));
     }
 
+    @PreAuthorize("hasAnyAuthority('COACH, ADMIN')")
     @GetMapping(produces = "application/json", path = "coaches/{id}/sessions")
     @ResponseStatus(HttpStatus.OK)
     public List<SessionDTO> getSessionsCoach(@PathVariable Long id) {
@@ -46,6 +49,7 @@ public class SessionController {
         return sessionMapper.toDTOList(sessionService.getAllSessionsCoach(id));
     }
 
+    @PreAuthorize("hasAnyAuthority('COACH, ADMIN')")
     @PostMapping(consumes = "application/json", path = "sessions/{id}/set-status")
     @ResponseStatus(HttpStatus.CREATED)
     public SessionDTO setSessionStatus(@RequestBody SessionDTO sessionDTO, @PathVariable Long id) {
