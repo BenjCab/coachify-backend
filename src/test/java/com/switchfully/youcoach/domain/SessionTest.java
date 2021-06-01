@@ -100,4 +100,49 @@ class SessionTest {
                 .setTime(LocalTime.now()));
     }
 
+    @Test
+    void whenSettingStatusOfSessionWithUnknownOrWrongStatus_thenThrowsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> new Session().setStatus("123"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToRequested_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Requested"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToAccepted_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Accepted"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToDoneWaitingFeedback_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Done, Waiting Feedback"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToFinishedFeedbackProvided_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Finished (Feedback provided)"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToFinishedCancelledByCoachee_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Finished (cancelled by coachee)"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToFinishedCancelledByCoach_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Finished (cancelled by coach)"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToFinishedDeclined_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Finished (Declined)"));
+    }
+
+    @Test
+    void whenSettingStatusOfSessionToFinishedAutomaticallyClosed_thenIsOkAndDoesNotThrow() {
+        assertDoesNotThrow(() -> new Session().setStatus("Finished (Automatically closed)"));
+    }
+
 }
