@@ -56,8 +56,7 @@ public class SessionService {
     }
 
     public Session updateAutomaticallySessionStatus(Session sessionToUpdate) {
-
-        if ((sessionToUpdate.getDate().isBefore(LocalDate.now()) || sessionToUpdate.getDate().isEqual(LocalDate.now())) && LocalTime.now().isAfter(sessionToUpdate.getTime())) {
+        if (sessionToUpdate.getDate().isBefore(LocalDate.now()) || (sessionToUpdate.getDate().isEqual(LocalDate.now()) && LocalTime.now().isAfter(sessionToUpdate.getTime()))) {
 
             switch (sessionToUpdate.getStatus().toLowerCase(Locale.ROOT)) {
                 case "requested":
