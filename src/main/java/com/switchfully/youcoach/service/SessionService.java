@@ -2,18 +2,13 @@ package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.DTOs.SessionDTO;
 import com.switchfully.youcoach.api.mappers.SessionMapper;
-import com.switchfully.youcoach.domain.AccountImpl;
-import com.switchfully.youcoach.domain.CoachProfile;
-import com.switchfully.youcoach.domain.Session;
-import com.switchfully.youcoach.domain.SessionRepository;
+import com.switchfully.youcoach.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Locale;
@@ -26,13 +21,16 @@ public class SessionService {
     private final SessionRepository sessionRepository;
     private final AccountService accountService;
     private final CoachProfileService coachProfileService;
+    private final SessionFeedbackCoacheeRepository sessionFeedbackCoacheeRepository;
     private static final Logger logger = LoggerFactory.getLogger(SessionService.class);
 
-    public SessionService(SessionMapper sessionMapper, SessionRepository sessionRepository, AccountService accountService, CoachProfileService coachProfileService) {
+
+    public SessionService(SessionMapper sessionMapper, SessionRepository sessionRepository, AccountService accountService, CoachProfileService coachProfileService, SessionFeedbackCoacheeRepository sessionFeedbackCoacheeRepository) {
         this.sessionMapper = sessionMapper;
         this.sessionRepository = sessionRepository;
         this.accountService = accountService;
         this.coachProfileService = coachProfileService;
+        this.sessionFeedbackCoacheeRepository = sessionFeedbackCoacheeRepository;
     }
 
     public Session createSession(SessionDTO sessionDTO) {
@@ -80,5 +78,15 @@ public class SessionService {
     public Session setSessionStatus(Long id, String status) {
         Session session = sessionRepository.getSessionBySessionId(id);
         return session.setStatus(status);
+    }
+
+    public Session getSessionById(Long id) {
+        return sessionRepository.getSessionBySessionId(id);
+    }
+
+    public SessionFeedbackCoachee setSessionFeedbackCoachee(Long id, SessionFeedbackCoachee sessionFeedbackCoachee) {
+        Session session = sessionRepository.getSessionBySessionId(id);
+        sessionFeedbackCoacheeRepository.save(sessionFeedbackCoachee);
+        return session.setSessionFeedbackCoachee(sessionFeedbackCoachee).getSessionFeedbackCoachee();
     }
 }

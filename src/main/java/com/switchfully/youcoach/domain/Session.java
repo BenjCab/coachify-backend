@@ -31,8 +31,11 @@ public class Session {
     private LocalTime time;
     @Column(name = "status")
     private String status;
+    @OneToOne
+    @JoinColumn(name = "feedback_coachee_id")
+    private SessionFeedbackCoachee sessionFeedbackCoachee;
 
-    public Session(long sessionId, AccountImpl coachee, CoachProfile coach, String subject, String location, String remarks, LocalDate date, LocalTime time) {
+    public Session(long sessionId, AccountImpl coachee, CoachProfile coach, String subject, String location, String remarks, LocalDate date, LocalTime time, SessionFeedbackCoachee sessionFeedbackCoachee) {
         this.sessionId = sessionId;
         this.coachee = coachee;
         this.coach = coach;
@@ -41,6 +44,16 @@ public class Session {
         this.remarks = remarks;
         this.date = date;
         this.time = time;
+        this.sessionFeedbackCoachee = sessionFeedbackCoachee;
+    }
+
+    public SessionFeedbackCoachee getSessionFeedbackCoachee() {
+        return sessionFeedbackCoachee;
+    }
+
+    public Session setSessionFeedbackCoachee(SessionFeedbackCoachee sessionFeedbackCoachee) {
+        this.sessionFeedbackCoachee = sessionFeedbackCoachee;
+        return this;
     }
 
     public Session() {
@@ -141,15 +154,15 @@ public class Session {
             case "done, waiting feedback":
                 return "Done, Waiting Feedback";
             case "finished (feedback provided)":
-                return "Finished (Feedback provided)";
+                return "Finished (feedback provided)";
             case "finished (cancelled by coachee)":
                 return "Finished (cancelled by coachee)";
             case "finished (cancelled by coach)":
-                return "Finished (Cancelled by coach)";
+                return "Finished (cancelled by coach)";
             case "finished (declined)":
-                return "Finished (Declined)";
+                return "Finished (declined)";
             case "finished (automatically closed)":
-                return "Finished (Automatically closed)";
+                return "Finished (automatically closed)";
             default:
                 throw new IllegalArgumentException("Status of session does not exist.");
         }

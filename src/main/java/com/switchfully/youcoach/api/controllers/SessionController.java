@@ -1,6 +1,8 @@
 package com.switchfully.youcoach.api.controllers;
 
 import com.switchfully.youcoach.api.DTOs.SessionDTO;
+import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoacheeDTO;
+import com.switchfully.youcoach.api.mappers.SessionFeedBackMapper;
 import com.switchfully.youcoach.api.mappers.SessionMapper;
 import com.switchfully.youcoach.service.SessionService;
 import org.slf4j.Logger;
@@ -18,11 +20,13 @@ public class SessionController {
     private static final Logger logger = LoggerFactory.getLogger(SessionController.class);
     private final SessionService sessionService;
     private final SessionMapper sessionMapper;
+    private final SessionFeedBackMapper sessionFeedBackMapper;
 
 
-    public SessionController(SessionService sessionService, SessionMapper sessionMapper) {
+    public SessionController(SessionService sessionService, SessionMapper sessionMapper, SessionFeedBackMapper sessionFeedBackMapper) {
         this.sessionService = sessionService;
         this.sessionMapper = sessionMapper;
+        this.sessionFeedBackMapper = sessionFeedBackMapper;
     }
 
     @PreAuthorize("hasAnyAuthority('COACH, ADMIN, COACHEE')")
@@ -57,5 +61,13 @@ public class SessionController {
         logger.info("Setting the status of session " + id + " to: " + sessionDTO.getStatus());
         return sessionMapper.toDTO(sessionService.setSessionStatus(id, sessionDTO.getStatus()));
     }
+
+    @PostMapping(consumes = "application/json", path = "sessions/{id}/feedback-coachee")
+    @ResponseStatus(HttpStatus.CREATED)
+    public SessionFeedbackCoacheeDTO setSessionFeedbackCoachee(@RequestBody SessionFeedbackCoacheeDTO sessionFeedbackDTO, @PathVariable Long id) {
+        logger.info("Setting the feedback of session of the coachhee of session " + id);
+        return sessionFeedBackMapper.toFeedBackCoacheeDTO(sessionService.setSessionFeedbackCoachee(id, sessionFeedBackMapper.toFeedBackCoacheeEntity(sessionFeedbackDTO)));
+    }
+
 
 }
