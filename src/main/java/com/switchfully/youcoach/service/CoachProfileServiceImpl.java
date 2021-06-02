@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.service;
 
+import com.switchfully.youcoach.api.DTOs.UpdateCoachProfileDTO;
 import com.switchfully.youcoach.api.mappers.CoachProfileMapper;
 import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
 import com.switchfully.youcoach.domain.CoachProfile;
@@ -49,5 +50,11 @@ public class CoachProfileServiceImpl implements CoachProfileService {
         }
     }
 
-
+    @Override
+    public UpdateCoachProfileDTO updateCoachProfile(Long id, UpdateCoachProfileDTO updateCoachProfileDTO) {
+        CoachProfile coachProfile = getCoachById(id);
+        coachProfile.setAvailability(updateCoachProfileDTO.getAvailability());
+        coachProfile.setIntroduction(updateCoachProfileDTO.getIntroduction());
+        return new UpdateCoachProfileDTO().setAvailability(coachProfile.getAvailability()).setIntroduction(updateCoachProfileDTO.getIntroduction());
+    }
 }

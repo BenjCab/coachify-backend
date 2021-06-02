@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.api.controllers;
 
 import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
+import com.switchfully.youcoach.api.DTOs.UpdateCoachProfileDTO;
 import com.switchfully.youcoach.api.mappers.CoachProfileMapper;
 import com.switchfully.youcoach.service.CoachProfileService;
 import org.slf4j.Logger;
@@ -50,6 +51,13 @@ public class CoachController {
     @ResponseStatus(HttpStatus.OK)
     public List<String> getAllTopicNames(){
         return coachProfileService.getAllTopicNames();
+    }
+
+    @PreAuthorize("hasAnyAuthority('COACH,ADMIN')")
+    @PostMapping(path="/coaches/{id}/coachInformation", produces ="application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public UpdateCoachProfileDTO updateCoachProfile(@RequestBody UpdateCoachProfileDTO updateCoachProfileDTO, @PathVariable Long id){
+        return coachProfileService.updateCoachProfile(id,updateCoachProfileDTO);
     }
 
 }

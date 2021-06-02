@@ -61,6 +61,16 @@ public class CoachProfile {
         return account;
     }
 
+    public CoachProfile setIntroduction(String introduction) {
+        this.introduction = introduction;
+        return this;
+    }
+
+    public CoachProfile setAvailability(String availability) {
+        this.availability = availability;
+        return this;
+    }
+
     public CoachProfile setAccount(AccountImpl account) {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(account,"Account");
         this.account = account;

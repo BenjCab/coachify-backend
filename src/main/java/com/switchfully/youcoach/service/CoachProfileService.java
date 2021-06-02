@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.DTOs.CoachProfileDTO;
+import com.switchfully.youcoach.api.DTOs.UpdateCoachProfileDTO;
 import com.switchfully.youcoach.domain.CoachProfile;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface CoachProfileService {
     List<String> getAllTopicNames();
 
     Long getCoachIdByCoacheeId(Long id);
+
+    UpdateCoachProfileDTO updateCoachProfile(Long id, UpdateCoachProfileDTO updateCoachProfileDTO);
 }
