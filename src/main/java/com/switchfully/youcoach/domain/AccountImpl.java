@@ -112,6 +112,21 @@ public class AccountImpl implements Account {
         this.enabled = true;
     }
 
+    public AccountImpl setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public AccountImpl setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public AccountImpl setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "AccountImpl{" +

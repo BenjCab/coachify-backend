@@ -2,13 +2,17 @@ package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.Account;
 import com.switchfully.youcoach.api.DTOs.UpdateSecuredUserDTO;
+import com.switchfully.youcoach.api.controllers.CoacheeController;
 import com.switchfully.youcoach.api.mappers.AccountMapper;
+import com.switchfully.youcoach.domain.AccountImpl;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.accountverification.AccountVerificationService;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.api.*;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.exception.AccountNotFoundException;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.password.reset.PasswordResetService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,6 +34,8 @@ public class SecuredUserService implements UserDetailsService {
 
     private final AccountVerificationService accountVerificationService;
     private final PasswordResetService passwordResetService;
+
+    private static final Logger logger = LoggerFactory.getLogger(SecuredUserService.class);
 
     public SecuredUserService(AccountService accountService, AccountMapper accountMapper, PasswordEncoder passwordEncoder, AccountVerificationService accountVerificationService, PasswordResetService passwordResetService) {
         this.accountService = accountService;
@@ -88,6 +94,12 @@ public class SecuredUserService implements UserDetailsService {
     }
 
     public UpdateSecuredUserDTO updateAccount(UpdateSecuredUserDTO updateSecuredUserDTO, Long id) {
-        return null;
+        logger.warn("Tried to update account "+id+", with lastname= "+updateSecuredUserDTO.getLastName()+" and firstname= "+updateSecuredUserDTO.getFirstName());
+
+        AccountImpl account = accountService.getUserById(id);
+        account.setLastName(updateSecuredUserDTO.getLastName());
+        account.setFirstName(updateSecuredUserDTO.getFirstName());
+        account.setEmail(updateSecuredUserDTO.getEmail());
+        return new UpdateSecuredUserDTO(account.getFirstName(),account.getLastName(),account.getEmail());
     }
 }
