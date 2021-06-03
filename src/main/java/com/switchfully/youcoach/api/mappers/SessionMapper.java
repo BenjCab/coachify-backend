@@ -13,10 +13,12 @@ import java.util.stream.Collectors;
 public class SessionMapper {
     private final CoachProfileService coachService;
     private final AccountService coacheeService;
+    private final SessionFeedBackMapper sessionFeedBackMapper;
 
-    public SessionMapper(CoachProfileService coachService, AccountService coacheeService) {
+    public SessionMapper(CoachProfileService coachService, AccountService coacheeService, SessionFeedBackMapper sessionFeedBackMapper) {
         this.coachService = coachService;
         this.coacheeService = coacheeService;
+        this.sessionFeedBackMapper = sessionFeedBackMapper;
     }
 
     public SessionDTO toDTO(Session session) {
@@ -33,7 +35,8 @@ public class SessionMapper {
                 .setRemarks(session.getRemarks())
                 .setStatus(session.getStatus())
                 .setCoacheeFirstName(session.getCoachee().getFirstName())
-                .setCoacheeLastName(session.getCoachee().getLastName());
+                .setCoacheeLastName(session.getCoachee().getLastName())
+                .setSessionFeedbackCoacheeDTO(sessionFeedBackMapper.toFeedBackCoacheeDTO(session.getSessionFeedbackCoachee()));
     }
 
     public Session toEntity(SessionDTO sessionDTO) {

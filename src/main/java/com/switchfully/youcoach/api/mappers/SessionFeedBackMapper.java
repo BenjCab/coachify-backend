@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SessionFeedBackMapper {
-    private final SessionService sessionService;
 
-    public SessionFeedBackMapper(SessionService sessionService) {
-        this.sessionService = sessionService;
+
+    public SessionFeedBackMapper() {
+
     }
 
     public SessionFeedbackCoachee toFeedBackCoacheeEntity(SessionFeedbackCoacheeDTO sessionFeedbackCoacheeDTO) {
@@ -22,6 +22,9 @@ public class SessionFeedBackMapper {
     }
 
     public SessionFeedbackCoacheeDTO toFeedBackCoacheeDTO(SessionFeedbackCoachee sessionFeedbackCoachee) {
+        if (sessionFeedbackCoachee == null) {
+            return new SessionFeedbackCoacheeDTO();
+        }
         return new SessionFeedbackCoacheeDTO().setSessionFeedbackCoacheeId(sessionFeedbackCoachee.getSession_feedback_id())
                 .setExplanationRating(sessionFeedbackCoachee.getExplanationRating())
                 .setUsefulRating(sessionFeedbackCoachee.getUsefulRating())
