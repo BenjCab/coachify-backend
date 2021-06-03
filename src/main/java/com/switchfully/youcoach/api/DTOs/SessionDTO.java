@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.api.DTOs;
 
+import com.switchfully.youcoach.domain.SessionFeedbackCoachee;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -17,8 +19,14 @@ public class SessionDTO {
     private LocalDate date;
     private LocalTime time;
     private String status;
+    private SessionFeedbackCoacheeDTO sessionFeedbackCoacheeDTO;
 
     public SessionDTO() {
+    }
+
+    public SessionDTO setSessionFeedbackCoacheeDTO(SessionFeedbackCoacheeDTO sessionFeedbackCoacheeDTO) {
+        this.sessionFeedbackCoacheeDTO = sessionFeedbackCoacheeDTO;
+        return this;
     }
 
     public long getCoacheeId() {
