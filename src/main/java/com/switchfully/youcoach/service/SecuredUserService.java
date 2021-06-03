@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.service;
 
 import com.switchfully.youcoach.api.Account;
+import com.switchfully.youcoach.api.DTOs.UpdateSecuredUserDTO;
 import com.switchfully.youcoach.api.mappers.AccountMapper;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.SecuredUser;
@@ -84,5 +85,9 @@ public class SecuredUserService implements UserDetailsService {
 
     public PasswordChangeResultDto performPasswordChange(PasswordChangeRequestDto changeRequest) {
         return passwordResetService.performPasswordChange(changeRequest);
+    }
+
+    public UpdateSecuredUserDTO updateAccount(UpdateSecuredUserDTO updateSecuredUserDTO, Long id) {
+        return null;
     }
 }
