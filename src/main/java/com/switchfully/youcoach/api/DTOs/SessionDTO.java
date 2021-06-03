@@ -145,4 +145,10 @@ public class SessionDTO {
         this.coacheeLastName = coacheeLastName;
         return this;
     }
+
+    public SessionFeedbackCoacheeDTO getSessionFeedbackCoacheeDTO() {
+        return sessionFeedbackCoacheeDTO;
+    }
+
+
 }

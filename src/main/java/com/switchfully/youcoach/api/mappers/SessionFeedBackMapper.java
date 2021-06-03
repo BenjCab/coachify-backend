@@ -25,7 +25,8 @@ public class SessionFeedBackMapper {
         if (sessionFeedbackCoachee == null) {
             return new SessionFeedbackCoacheeDTO();
         }
-        return new SessionFeedbackCoacheeDTO().setSessionFeedbackCoacheeId(sessionFeedbackCoachee.getSession_feedback_id())
+        return new SessionFeedbackCoacheeDTO()
+                .setSessionFeedbackCoacheeId(sessionFeedbackCoachee.getSession_feedback_id())
                 .setExplanationRating(sessionFeedbackCoachee.getExplanationRating())
                 .setUsefulRating(sessionFeedbackCoachee.getUsefulRating())
                 .setComment1(sessionFeedbackCoachee.getComment1())
