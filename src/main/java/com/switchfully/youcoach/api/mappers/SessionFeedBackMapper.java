@@ -1,7 +1,9 @@
 package com.switchfully.youcoach.api.mappers;
 
+import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoachDTO;
 import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoacheeDTO;
 import com.switchfully.youcoach.domain.Session;
+import com.switchfully.youcoach.domain.SessionFeedbackCoach;
 import com.switchfully.youcoach.domain.SessionFeedbackCoachee;
 import com.switchfully.youcoach.service.SessionService;
 import org.springframework.stereotype.Component;
@@ -31,5 +33,24 @@ public class SessionFeedBackMapper {
                 .setUsefulRating(sessionFeedbackCoachee.getUsefulRating())
                 .setComment1(sessionFeedbackCoachee.getComment1())
                 .setComment2(sessionFeedbackCoachee.getComment2());
+    }
+
+    public SessionFeedbackCoach toFeedBackCoachEntity(SessionFeedbackCoachDTO sessionFeedbackCoach) {
+        return new SessionFeedbackCoach().setRating1(sessionFeedbackCoach.getRating1())
+                .setRating2(sessionFeedbackCoach.getRating2())
+                .setComment1(sessionFeedbackCoach.getComment1())
+                .setComment2(sessionFeedbackCoach.getComment2());
+    }
+
+    public SessionFeedbackCoachDTO toFeedBackCoachDTO(SessionFeedbackCoach sessionFeedbackCoach) {
+        if (sessionFeedbackCoach == null) {
+            return new SessionFeedbackCoachDTO();
+        }
+        return new SessionFeedbackCoachDTO()
+                .setSessionFeedbackCoacheeId(sessionFeedbackCoach.getSession_feedback_id())
+                .setRating1(sessionFeedbackCoach.getRating1())
+                .setRating2(sessionFeedbackCoach.getRating2())
+                .setComment1(sessionFeedbackCoach.getComment1())
+                .setComment2(sessionFeedbackCoach.getComment2());
     }
 }

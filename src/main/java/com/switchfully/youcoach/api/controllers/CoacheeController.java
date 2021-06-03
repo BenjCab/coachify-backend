@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/users")
 @RestController
+@CrossOrigin
 public class CoacheeController {
     private final AccountService accountService;
     private final AccountMapper accountMapper;

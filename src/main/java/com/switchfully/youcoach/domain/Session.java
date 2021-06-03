@@ -34,8 +34,11 @@ public class Session {
     @OneToOne
     @JoinColumn(name = "feedback_coachee_id")
     private SessionFeedbackCoachee sessionFeedbackCoachee;
+    @OneToOne
+    @JoinColumn(name = "feedback_coach_id")
+    private SessionFeedbackCoach sessionFeedbackCoach;
 
-    public Session(long sessionId, AccountImpl coachee, CoachProfile coach, String subject, String location, String remarks, LocalDate date, LocalTime time, SessionFeedbackCoachee sessionFeedbackCoachee) {
+    public Session(long sessionId, AccountImpl coachee, CoachProfile coach, String subject, String location, String remarks, LocalDate date, LocalTime time, SessionFeedbackCoachee sessionFeedbackCoachee, SessionFeedbackCoach sessionFeedbackCoach) {
         this.sessionId = sessionId;
         this.coachee = coachee;
         this.coach = coach;
@@ -45,6 +48,7 @@ public class Session {
         this.date = date;
         this.time = time;
         this.sessionFeedbackCoachee = sessionFeedbackCoachee;
+        this.sessionFeedbackCoach = sessionFeedbackCoach;
     }
 
     public SessionFeedbackCoachee getSessionFeedbackCoachee() {
@@ -57,6 +61,15 @@ public class Session {
     }
 
     public Session() {
+    }
+
+    public SessionFeedbackCoach getSessionFeedbackCoach() {
+        return sessionFeedbackCoach;
+    }
+
+    public Session setSessionFeedbackCoach(SessionFeedbackCoach sessionFeedbackCoach) {
+        this.sessionFeedbackCoach = sessionFeedbackCoach;
+        return this;
     }
 
     public long getSessionId() {
