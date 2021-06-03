@@ -22,15 +22,17 @@ public class SessionService {
     private final AccountService accountService;
     private final CoachProfileService coachProfileService;
     private final SessionFeedbackCoacheeRepository sessionFeedbackCoacheeRepository;
+    private final SessionFeedbackCoachRepository sessionFeedbackCoachRepository;
     private static final Logger logger = LoggerFactory.getLogger(SessionService.class);
 
 
-    public SessionService(SessionMapper sessionMapper, SessionRepository sessionRepository, AccountService accountService, CoachProfileService coachProfileService, SessionFeedbackCoacheeRepository sessionFeedbackCoacheeRepository) {
+    public SessionService(SessionMapper sessionMapper, SessionRepository sessionRepository, AccountService accountService, CoachProfileService coachProfileService, SessionFeedbackCoacheeRepository sessionFeedbackCoacheeRepository, SessionFeedbackCoachRepository sessionFeedbackCoachRepository) {
         this.sessionMapper = sessionMapper;
         this.sessionRepository = sessionRepository;
         this.accountService = accountService;
         this.coachProfileService = coachProfileService;
         this.sessionFeedbackCoacheeRepository = sessionFeedbackCoacheeRepository;
+        this.sessionFeedbackCoachRepository = sessionFeedbackCoachRepository;
     }
 
     public Session createSession(SessionDTO sessionDTO) {
@@ -88,5 +90,11 @@ public class SessionService {
         Session session = sessionRepository.getSessionBySessionId(id);
         sessionFeedbackCoacheeRepository.save(sessionFeedbackCoachee);
         return session.setSessionFeedbackCoachee(sessionFeedbackCoachee).getSessionFeedbackCoachee();
+    }
+
+    public SessionFeedbackCoach setSessionFeedbackCoach(Long id, SessionFeedbackCoach sessionFeedbackCoach) {
+        Session session = sessionRepository.getSessionBySessionId(id);
+        sessionFeedbackCoachRepository.save(sessionFeedbackCoach);
+        return session.setSessionFeedbackCoach(sessionFeedbackCoach).getSessionFeedbackCoach();
     }
 }

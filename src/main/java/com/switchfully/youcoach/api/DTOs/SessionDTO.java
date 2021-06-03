@@ -20,12 +20,22 @@ public class SessionDTO {
     private LocalTime time;
     private String status;
     private SessionFeedbackCoacheeDTO sessionFeedbackCoacheeDTO;
+    private SessionFeedbackCoachDTO sessionFeedbackCoachDTO;
 
     public SessionDTO() {
     }
 
     public SessionDTO setSessionFeedbackCoacheeDTO(SessionFeedbackCoacheeDTO sessionFeedbackCoacheeDTO) {
         this.sessionFeedbackCoacheeDTO = sessionFeedbackCoacheeDTO;
+        return this;
+    }
+
+    public SessionFeedbackCoachDTO getSessionFeedbackCoachDTO() {
+        return sessionFeedbackCoachDTO;
+    }
+
+    public SessionDTO setSessionFeedbackCoachDTO(SessionFeedbackCoachDTO sessionFeedbackCoachDTO) {
+        this.sessionFeedbackCoachDTO = sessionFeedbackCoachDTO;
         return this;
     }
 

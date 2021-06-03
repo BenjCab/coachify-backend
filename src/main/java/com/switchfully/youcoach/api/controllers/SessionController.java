@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.api.controllers;
 
 import com.switchfully.youcoach.api.DTOs.SessionDTO;
+import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoachDTO;
 import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoacheeDTO;
 import com.switchfully.youcoach.api.mappers.SessionFeedBackMapper;
 import com.switchfully.youcoach.api.mappers.SessionMapper;
@@ -69,5 +70,10 @@ public class SessionController {
         return sessionFeedBackMapper.toFeedBackCoacheeDTO(sessionService.setSessionFeedbackCoachee(id, sessionFeedBackMapper.toFeedBackCoacheeEntity(sessionFeedbackDTO)));
     }
 
-
+    @PostMapping(consumes = "application/json", path = "sessions/{id}/feedback-coach")
+    @ResponseStatus(HttpStatus.CREATED)
+    public SessionFeedbackCoachDTO setSessionFeedbackCoach(@RequestBody SessionFeedbackCoachDTO sessionFeedbackDTO, @PathVariable Long id) {
+        logger.info("Setting the feedback of session of the coach of session " + id);
+        return sessionFeedBackMapper.toFeedBackCoachDTO(sessionService.setSessionFeedbackCoach(id, sessionFeedBackMapper.toFeedBackCoachEntity(sessionFeedbackDTO)));
+    }
 }
