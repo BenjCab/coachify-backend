@@ -35,12 +35,12 @@ public class CoacheeController {
         return accountMapper.toUserDto(accountService.getUserById(id));
     }
 
-    @PreAuthorize("hasAnyAuthority('COACHEE, COACH, ADMIN')")
-    @PostMapping(path = "/{id}", produces = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UpdateSecuredUserDTO updateAccount(@PathVariable Long id, UpdateSecuredUserDTO updateSecuredUserDTO) {
-        return securedUserService.updateAccount(updateSecuredUserDTO, id);
-    }
+//    @PreAuthorize("hasAnyAuthority('COACHEE, COACH, ADMIN')")
+//    @GetMapping(path = "/{id}", produces = "application/json")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public UpdateSecuredUserDTO updateAccount(@PathVariable Long id, UpdateSecuredUserDTO updateSecuredUserDTO) {
+//        return securedUserService.updateAccount(updateSecuredUserDTO, id);
+//    }
 
     @PreAuthorize("isAnonymous()")
     @PostMapping(path = "/reset-password", produces = "application/json", consumes = "application/json")
