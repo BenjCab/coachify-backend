@@ -22,4 +22,5 @@ public interface Account {
     void enableAccount();
     void setResetPasswordToken(String token);
     String getResetPasswordToken();
+
 }
