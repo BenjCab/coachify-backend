@@ -36,7 +36,8 @@ public class SessionMapper {
                 .setStatus(session.getStatus())
                 .setCoacheeFirstName(session.getCoachee().getFirstName())
                 .setCoacheeLastName(session.getCoachee().getLastName())
-                .setSessionFeedbackCoacheeDTO(sessionFeedBackMapper.toFeedBackCoacheeDTO(session.getSessionFeedbackCoachee()));
+                .setSessionFeedbackCoacheeDTO(sessionFeedBackMapper.toFeedBackCoacheeDTO(session.getSessionFeedbackCoachee()))
+                .setSessionFeedbackCoachDTO(sessionFeedBackMapper.toFeedBackCoachDTO(session.getSessionFeedbackCoach()));
     }
 
     public Session toEntity(SessionDTO sessionDTO) {
