@@ -2,10 +2,8 @@ package com.switchfully.youcoach.api.mappers;
 
 import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoachDTO;
 import com.switchfully.youcoach.api.DTOs.SessionFeedbackCoacheeDTO;
-import com.switchfully.youcoach.domain.Session;
 import com.switchfully.youcoach.domain.SessionFeedbackCoach;
 import com.switchfully.youcoach.domain.SessionFeedbackCoachee;
-import com.switchfully.youcoach.service.SessionService;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -47,7 +45,7 @@ public class SessionFeedBackMapper {
             return new SessionFeedbackCoachDTO();
         }
         return new SessionFeedbackCoachDTO()
-                .setSessionFeedbackCoacheeId(sessionFeedbackCoach.getSession_feedback_id())
+                .setSessionFeedbackCoachId(sessionFeedbackCoach.getSession_feedback_id())
                 .setRating1(sessionFeedbackCoach.getRating1())
                 .setRating2(sessionFeedbackCoach.getRating2())
                 .setComment1(sessionFeedbackCoach.getComment1())

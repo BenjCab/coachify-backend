@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.api.DTOs;
 
 public class SessionFeedbackCoachDTO {
-    private Long sessionFeedbackCoacheeId;
+    private Long sessionFeedbackCoachId;
     private Long sessionId;
     private int rating1;
     private int rating2;
@@ -11,12 +11,12 @@ public class SessionFeedbackCoachDTO {
     public SessionFeedbackCoachDTO() {
     }
 
-    public Long getSessionFeedbackCoacheeId() {
-        return sessionFeedbackCoacheeId;
+    public Long getSessionFeedbackCoachId() {
+        return sessionFeedbackCoachId;
     }
 
-    public SessionFeedbackCoachDTO setSessionFeedbackCoacheeId(Long sessionFeedbackCoacheeId) {
-        this.sessionFeedbackCoacheeId = sessionFeedbackCoacheeId;
+    public SessionFeedbackCoachDTO setSessionFeedbackCoachId(Long sessionFeedbackCoachId) {
+        this.sessionFeedbackCoachId = sessionFeedbackCoachId;
         return this;
     }
 
