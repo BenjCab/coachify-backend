@@ -4,7 +4,6 @@ import com.switchfully.youcoach.api.DTOs.UpdateCoachProfileDTO;
 import com.switchfully.youcoach.domain.*;
 import com.switchfully.youcoach.infrastructure.security.authentication.jwt.JwtGenerator;
 import com.switchfully.youcoach.infrastructure.security.authentication.user.Authority;
-import com.switchfully.youcoach.service.CoachProfileService;
 import com.switchfully.youcoach.util.EmailGenerator;
 import com.switchfully.youcoach.util.TestUtil;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,9 +32,6 @@ class CoachControllerTest {
     private AccountRepository accountRepository;
 
     @Autowired
-    private CoachProfileService coachService;
-
-    @Autowired
     private CoachRepository coachRepository;
 
     @Autowired
@@ -46,7 +42,7 @@ class CoachControllerTest {
     UpdateCoachProfileDTO updateCoachProfileDTO;
 
     @BeforeEach
-    void generateSession() {
+    void generateCoachProfile() {
 
         account = AccountImpl.builder()
                 .setFirstName("Bart")
