@@ -36,7 +36,7 @@ public class CoacheeController {
     }
 
     @PreAuthorize("hasAnyAuthority('COACHEE, COACH, ADMIN')")
-    @GetMapping(path = "/{id}", produces = "application/json")
+    @PostMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public UpdateSecuredUserDTO updateAccount(@PathVariable Long id, UpdateSecuredUserDTO updateSecuredUserDTO) {
         return securedUserService.updateAccount(updateSecuredUserDTO, id);

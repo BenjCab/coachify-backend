@@ -23,4 +23,18 @@ public class UpdateSecuredUserDTO {
         return email;
     }
 
+    public UpdateSecuredUserDTO setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public UpdateSecuredUserDTO setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public UpdateSecuredUserDTO setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 }
