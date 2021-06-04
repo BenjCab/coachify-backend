@@ -59,6 +59,7 @@ class CoacheeControllerTest {
 
     }
 
+
     @Test
     public void shouldGetCoacheeById() throws Exception {
         String token = "Bearer " + jwtGenerator.generateToken(account);
@@ -73,6 +74,6 @@ class CoacheeControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email").value(securedUserDto.getEmail()))
-                .andExpect(jsonPath("$.firstname").value(securedUserDto.getFirstName()));
+                .andExpect(jsonPath("$.firstName").value(securedUserDto.getFirstName()));
     }
 }
