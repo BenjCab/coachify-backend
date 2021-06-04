@@ -89,12 +89,20 @@ public class SessionService {
     public SessionFeedbackCoachee setSessionFeedbackCoachee(Long id, SessionFeedbackCoachee sessionFeedbackCoachee) {
         Session session = sessionRepository.getSessionBySessionId(id);
         sessionFeedbackCoacheeRepository.save(sessionFeedbackCoachee);
+        checkIfBothFeedbacksAreProvided(session);
         return session.setSessionFeedbackCoachee(sessionFeedbackCoachee).getSessionFeedbackCoachee();
     }
 
     public SessionFeedbackCoach setSessionFeedbackCoach(Long id, SessionFeedbackCoach sessionFeedbackCoach) {
         Session session = sessionRepository.getSessionBySessionId(id);
         sessionFeedbackCoachRepository.save(sessionFeedbackCoach);
+        checkIfBothFeedbacksAreProvided(session);
         return session.setSessionFeedbackCoach(sessionFeedbackCoach).getSessionFeedbackCoach();
+    }
+
+    public void checkIfBothFeedbacksAreProvided(Session session) {
+        if (session.getSessionFeedbackCoachee()!= null && session.getSessionFeedbackCoach()!= null) {
+            setSessionStatus(session.getSessionId(), "Finished (Feedback provided)");
+        }
     }
 }
