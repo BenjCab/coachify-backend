@@ -33,17 +33,17 @@ insert into topics(topic_name) values ('C++');
 insert into topics(topic_name) values ('PHP');
 insert into topics(topic_name) values ('Python-Turtle');
 
-insert into coach_profile(account_id, introduction, availability, image)
-values (4, 'i build stuff', 'every other day', './assets/images/bob.jpg');
+insert into coach_profile(account_id, introduction, availability)
+values (4, 'i build stuff', 'every other day');
 
-insert into coach_profile(account_id, introduction, availability, image)
-values (5, 'ill teach you how to slain monster and use good programming practice', 'every monday', './assets/images/gerald.jpg');
+insert into coach_profile(account_id, introduction, availability)
+values (5, 'ill teach you how to slain monster and use good programming practice', 'every monday');
 
-insert into coach_profile(account_id, introduction, availability, image)
-values (6, 'This is not an easter egg.', '2 first sundays of the month', './assets/images/Rick_Sanchez.png');
+insert into coach_profile(account_id, introduction, availability)
+values (6, 'This is not an easter egg.', '2 first sundays of the month');
 
-insert into coach_profile(account_id, introduction, availability, image)
-values (7, 'A dallek invasion is nothing compared to a typo in a URL', 'idk just ask me', './assets/images/doctor.jpg');
+insert into coach_profile(account_id, introduction, availability)
+values (7, 'A dallek invasion is nothing compared to a typo in a URL', 'idk just ask me');
 
 insert into topic_by_coach(coach_profile_id, topic_id, grade1, grade2, grade3)
 values(4, 3, true, false, false);

@@ -58,7 +58,6 @@ class CoachControllerTest {
         coachProfile = CoachProfile.builder()
                 .setAccount(account)
                 .setAvailability("Sunday")
-                .setImage("./assets/images/profile-picture-coach.png")
                 .setIntroduction("intro")
                 .build();
 

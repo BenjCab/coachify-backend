@@ -1,19 +1,20 @@
 set schema 'public';
 
 insert into accounts(first_name, last_name, email, password, enabled)
-values ('Testa', 'Test', 'test@test.com', '$2a$10$fMwGqxsxtRttQsFl3g8GXeYDK3BJMeZH4MM9ZYlgnw9T42cxXux7u', true);
+values ('Testa', 'Test', 'coach1@codecoach.org', '$2a$10$eI4Dn.h9EitPnuR57j5rmOZaINBdGR6FjKhD1BcGfHUyforuqLxY6
+', true);
 insert into authorities(account_id, authority)
 values (1, 'COACH');
 insert into authorities(account_id, authority)
 values (1, 'COACHEE');
 
 insert into accounts(first_name, last_name, email, password, enabled)
-values ('Bart', 'Simpson', 'bart@test.com', '$2a$10$fMwGqxsxtRttQsFl3g8GXeYDK3BJMeZH4MM9ZYlgnw9T42cxXux7u', true);
+values ('Bart', 'Simpson', 'coachee1@codecoach.org', '$2a$10$eI4Dn.h9EitPnuR57j5rmOZaINBdGR6FjKhD1BcGfHUyforuqLxY6', true);
 insert into authorities(account_id, authority)
 values (2, 'COACHEE');
 
 insert into accounts(first_name, last_name, email, password, enabled)
-values ('Marge', 'Simpson', 'marge@test.com', '$2a$10$fMwGqxsxtRttQsFl3g8GXeYDK3BJMeZH4MM9ZYlgnw9T42cxXux7u', true);
+values ('Marge', 'Simpson', 'admin1@codecoach.org', '$2a$10$eI4Dn.h9EitPnuR57j5rmOZaINBdGR6FjKhD1BcGfHUyforuqLxY6', true);
 insert into authorities(account_id, authority)
 values (3, 'COACH');
 insert into authorities(account_id, authority)
@@ -21,11 +22,11 @@ values (3, 'COACHEE');
 insert into authorities(account_id, authority)
 values (3, 'ADMIN');
 
-insert into coach_profile(account_id, introduction, availability, image)
-values (3, 'Hello,my name is Marge Simpson', 'every sunday', './assets/images/profile-picture-coach.png');
+insert into coach_profile(account_id, introduction, availability)
+values (3, 'Hello,my name is Marge Simpson', 'every sunday');
 
-insert into coach_profile(account_id, introduction, availability, image)
-values (1, 'test intro', 'every day', './assets/images/profile-picture-coach.png');
+insert into coach_profile(account_id, introduction, availability)
+values (1, 'test intro', 'every day');
 
 insert into topics(topic_name) values ('Python');
 insert into topics(topic_name) values ('Angular');

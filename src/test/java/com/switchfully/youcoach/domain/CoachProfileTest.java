@@ -32,7 +32,6 @@ class CoachProfileTest {
                 .setAccount(account)
                 .setAvailability("ava")
                 .setIntroduction(null)
-                .setImage("sdfsdf")
                 .build());
     }
 
@@ -43,7 +42,6 @@ class CoachProfileTest {
                 .setAccount(account)
                 .setAvailability(" ")
                 .setIntroduction("dfdf")
-                .setImage("sdfsdf")
                 .build());
     }
 

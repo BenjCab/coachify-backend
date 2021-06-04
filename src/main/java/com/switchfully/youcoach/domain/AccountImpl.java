@@ -33,6 +33,9 @@ public class AccountImpl implements Account {
     @Enumerated(EnumType.STRING)
     private List<Authority> authorities;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "enabled")
     private boolean enabled;
 

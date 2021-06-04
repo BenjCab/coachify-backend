@@ -29,7 +29,6 @@ class TopicByCoachTest {
                 .setAccount(account)
                 .setAvailability("ava")
                 .setIntroduction("introduction")
-                .setImage("image")
                 .build();
 
         topic = new Topic().setTopicName("Angular");
