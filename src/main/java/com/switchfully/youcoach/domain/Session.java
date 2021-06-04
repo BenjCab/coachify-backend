@@ -165,7 +165,7 @@ public class Session {
             case "accepted":
                 return "Accepted";
             case "done, waiting feedback":
-                return "Done, Waiting Feedback";
+                return "Done, waiting feedback";
             case "finished (feedback provided)":
                 return "Finished (feedback provided)";
             case "finished (cancelled by coachee)":
