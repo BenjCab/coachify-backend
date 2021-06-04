@@ -21,7 +21,6 @@ public class CoachProfileMapper {
         return new CoachProfileDTO()
                 .setFirstName(coach.getAccount().getFirstName())
                 .setLastName(coach.getAccount().getLastName())
-                .setImage(coach.getImage())
                 .setTopicsByCoach(topicDTOMapper.toDTOList(topicByCoachService.getAllTopicsByCoachProfile(coach)))
                 .setIntroduction(coach.getIntroduction())
                 .setAvailability(coach.getAvailability())

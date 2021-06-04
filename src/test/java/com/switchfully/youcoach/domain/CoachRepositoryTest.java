@@ -33,7 +33,6 @@ class CoachRepositoryTest {
         CoachProfile coachProfile = CoachProfile.builder()
                 .setAccount(account)
                 .setAvailability("testing")
-                .setImage("assets/images/testImage")
                 .setIntroduction("test introduction")
                 .build();
 
@@ -66,7 +65,6 @@ class CoachRepositoryTest {
         CoachProfile coachProfile = CoachProfile.builder()
                 .setAccount(account)
                 .setAvailability("testing")
-                .setImage("assets/images/testImage")
                 .setIntroduction("test introduction")
                 .build();
 
@@ -77,7 +75,6 @@ class CoachRepositoryTest {
         Assertions.assertEquals(coachProfile.getIntroduction(), coachProfile1.getIntroduction());
         Assertions.assertEquals(coachProfile.getId(), coachProfile1.getId());
         Assertions.assertEquals(coachProfile.getAvailability(), coachProfile1.getAvailability());
-        Assertions.assertEquals(coachProfile.getImage(), coachProfile1.getImage());
 
         coachRepository.delete(coachProfile);
         accountRepository.delete(account);

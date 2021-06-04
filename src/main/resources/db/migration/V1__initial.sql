@@ -7,6 +7,7 @@ create table if not exists accounts
     last_name  varchar(44)           not null,
     email      varchar(44)           not null,
     password   varchar(255)          not null,
+    image        varchar(255),
     enabled    boolean default false not null
 );
 
@@ -28,6 +29,5 @@ create table if not exists coach_profile
     id           serial primary key not null,
     account_id   serial             not null,
     introduction varchar(255),
-    availability varchar(255),
-    image        varchar(255)
+    availability varchar(255)
 );

@@ -31,7 +31,6 @@ class SessionTest {
                 .setAccount(account)
                 .setAvailability("ava")
                 .setIntroduction("introduction")
-                .setImage("image")
                 .build();
     }
 //

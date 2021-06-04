@@ -15,8 +15,6 @@ public class CoachProfile {
     private String introduction;
     @Column(name = "availability")
     private String availability;
-    @Column(name = "image")
-    private String image;
     @OneToOne
     @JoinColumn(name="account_id")
     private AccountImpl account;
@@ -28,7 +26,6 @@ public class CoachProfile {
         this.id = builder.id;
         this.introduction = builder.introduction;
         this.availability = builder.availability;
-        this.image = builder.image;
         this.account = builder.account;
     }
 
@@ -51,10 +48,6 @@ public class CoachProfile {
 
     public String getAvailability() {
         return availability;
-    }
-
-    public String getImage() {
-        return image;
     }
 
     public AccountImpl getAccount() {
@@ -81,7 +74,6 @@ public class CoachProfile {
         private Long id;
         private String introduction;
         private String availability;
-        private String image;
         private AccountImpl account;
 
         private Builder() {
@@ -101,11 +93,6 @@ public class CoachProfile {
         public Builder setAvailability(String availability) {
             ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(availability,"Availability");
             this.availability = availability;
-            return this;
-        }
-
-        public Builder setImage(String image) {
-            this.image = image;
             return this;
         }
 
